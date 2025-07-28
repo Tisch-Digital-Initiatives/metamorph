@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DISS_submission publishing_option="0" embargo_code="0" third_party_search="Y">
+  <DISS_authorship>
+    <DISS_author type="primary">
+      <DISS_name>
+        <DISS_surname>Durley</DISS_surname>
+        <DISS_fname>Kamari </DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+      <DISS_contact type="future">
+        <DISS_contact_effdt>08/07/2020</DISS_contact_effdt>
+        <DISS_address>
+          <DISS_addrline>15 Rice Ave.</DISS_addrline>
+          <DISS_addrline>#1</DISS_addrline>
+          <DISS_city>Medford</DISS_city>
+          <DISS_st>MA</DISS_st>
+          <DISS_pcode>02155</DISS_pcode>
+          <DISS_country>US</DISS_country>
+        </DISS_address>
+        <DISS_email>kamaridurley@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_citizenship/>
+    </DISS_author>
+  </DISS_authorship>
+  <DISS_description page_count="91" type="masters" external_id="http://dissertations.umi.com/tuftsase:12642" apply_for_copyright="no">
+    <DISS_title>Living Libraries: Examining the Co-location of Affordable Housing and Public Libraries</DISS_title>
+    <DISS_dates>
+      <DISS_comp_date>2020</DISS_comp_date>
+      <DISS_accept_date>01/01/2020</DISS_accept_date>
+    </DISS_dates>
+    <DISS_degree>M.A.</DISS_degree>
+    <DISS_institution>
+      <DISS_inst_code>0234</DISS_inst_code>
+      <DISS_inst_name>Tufts University (Graduate Studies Arts, Sciences and Engineering)</DISS_inst_name>
+      <DISS_inst_contact>Urban and Environmental Policy and Planning</DISS_inst_contact>
+      <DISS_processing_code>M</DISS_processing_code>
+    </DISS_institution>
+    <DISS_advisor>
+      <DISS_name>
+        <DISS_surname>Agyeman</DISS_surname>
+        <DISS_fname>Julian</DISS_fname>
+        <DISS_middle/>
+      </DISS_name>
+    </DISS_advisor>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Shamsuddin</DISS_surname>
+        <DISS_fname>Shomon</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_categorization>
+      <DISS_category>
+        <DISS_cat_code>0999</DISS_cat_code>
+        <DISS_cat_desc>Urban planning</DISS_cat_desc>
+      </DISS_category>
+      <DISS_keyword>Affordable Housing, Colocation, Public Libraries</DISS_keyword>
+      <DISS_language>en</DISS_language>
+    </DISS_categorization>
+  </DISS_description>
+  <DISS_content>
+    <DISS_abstract>
+      <DISS_para>This research examines the implications of the co-location of affordable housing and public libraries, particularly in regard to the effect that libraries has in improving resident livelihoods, and provides a series of recommendations based off the evidence. The city of Boston has explored this phenomenon through its Housing with Public Assets program, which targeted four libraries, among them the Egleston Square Branch of the Boston Public Library. My research seeks to understand what the necessary success factors are for co-location to be viable, the benefits that residents draw from co-location, specifically public libraries, and how partnerships and policy shifts can unlock the human potential through the social capital of co-location. By utilizing feedback from three separate community processes, interviews with several key municipal staff and two case studies on co-location in action, I show that libraries help to produce tangible quality of life improvements for residents, even without physical co-location.</DISS_para>
+    </DISS_abstract>
+    <DISS_binary type="PDF">Durley_tuftsase_0234M_12642.pdf</DISS_binary>
+  </DISS_content>
+  <DISS_restriction/>
+  <DISS_repository>
+    <DISS_version/>
+    <DISS_agreement_decision_date/>
+    <DISS_acceptance>0</DISS_acceptance>
+    <DISS_delayed_release/>
+    <DISS_access_option/>
+  </DISS_repository>
+  <DISS_creative_commons_license>
+    <DISS_abbreviation/>
+  </DISS_creative_commons_license>
+</DISS_submission>

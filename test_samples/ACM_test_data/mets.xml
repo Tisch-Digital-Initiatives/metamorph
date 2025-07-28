@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book-part-wrapper PUBLIC "-//NLM//DTD BITS Book Interchange DTD with OASIS and XHTML Tables v2.0 20151225//EN" "https://jats.nlm.nih.gov/extensions/bits/2.0/BITS-book-oasis2.dtd">
+<book-part-wrapper content-type="research-article" dtd-version="2.0" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:oasis="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<collection-meta collection-type="book-series">
+    <collection-id collection-id-type="doi">10.1145/acmconferences</collection-id>
+    <title-group>
+        <title>ACM Conferences</title>
+    </title-group>
+</collection-meta>
+	<book-meta>
+		<book-id book-id-type="acm-id">3557915</book-id>
+		<book-id book-id-type="doi">10.1145/3557915</book-id>
+		<book-title-group>
+			<book-title>Proceedings of the 30th International Conference on Advances in Geographic Information Systems</book-title>
+			<alt-title alt-title-type="acronym">SIGSPATIAL '22</alt-title>
+		</book-title-group>
+	</book-meta>
+	<book-part book-part-type="chapter" xml:lang="en" xmlns:ali="http://www.niso.org/schemas/ali/1.0/">
+		<book-part-meta>
+			<book-part-id book-part-id-type="acm-id">3560961</book-part-id>
+			<book-part-id book-part-id-type="doi">10.1145/3557915.3560961</book-part-id>
+			<book-part-id book-part-id-type="article-no">27</book-part-id>
+	<subj-group subj-group-type="ccs2012">
+		<compound-subject>
+			<compound-subject-part content-type="code">10010405.10010455.10010458</compound-subject-part>
+			<compound-subject-part content-type="text">Applied computing~Law, social and behavioral sciences~Law</compound-subject-part>
+			<compound-subject-part content-type="weight">500</compound-subject-part>
+		</compound-subject>
+		<compound-subject>
+			<compound-subject-part content-type="code">10002950.10003624.10003633.10010917</compound-subject-part>
+			<compound-subject-part content-type="text">Mathematics of computing~Discrete mathematics~Graph theory~Graph algorithms</compound-subject-part>
+			<compound-subject-part content-type="weight">500</compound-subject-part>
+		</compound-subject>
+		<compound-subject>
+			<compound-subject-part content-type="code">10002951.10003227.10003236.10003237</compound-subject-part>
+			<compound-subject-part content-type="text">Information systems~Information systems applications~Spatial-temporal systems~Geographic information systems</compound-subject-part>
+			<compound-subject-part content-type="weight">500</compound-subject-part>
+		</compound-subject>
+		<compound-subject>
+			<compound-subject-part content-type="code">10002951.10003227.10003351.10003444</compound-subject-part>
+			<compound-subject-part content-type="text">Information systems~Information systems applications~Data mining~Clustering</compound-subject-part>
+			<compound-subject-part content-type="weight">500</compound-subject-part>
+		</compound-subject>
+	</subj-group>
+			<title-group>
+				<title>Aggregating community maps</title>
+			</title-group>
+<contrib-group>
+   <contrib contrib-type="author" id="artseq-00001">
+       <contrib-id authenticated="false" contrib-id-type="person_id">P7395009</contrib-id><contrib-id authenticated="false" contrib-id-type="profile_id">81314488061</contrib-id>
+       <name name-style="western">
+           <surname>Chambers</surname>
+           <given-names>Erin</given-names>
+       </name>
+	<aff>Saint Louis University</aff>
+	<email>erin.chambers@slu.edu</email>
+	<role>Author</role>
+   </contrib>
+   <contrib contrib-type="author" id="artseq-00002">
+       <contrib-id authenticated="false" contrib-id-type="person_id">P7395010</contrib-id><contrib-id authenticated="false" contrib-id-type="profile_id">99660403804</contrib-id>
+       <name name-style="western">
+           <surname>Duchin</surname>
+           <given-names>Moon</given-names>
+       </name>
+	<aff>Tufts University</aff><aff><institution-wrap><institution-id institution-id-type="profile_id">60023143</institution-id></institution-wrap></aff>
+	<email>moon.duchin@tufts.edu</email>
+	<role>Author</role>
+   </contrib>
+   <contrib contrib-type="author" id="artseq-00003">
+       <contrib-id authenticated="false" contrib-id-type="person_id">P7395011</contrib-id><contrib-id authenticated="false" contrib-id-type="profile_id">99660646946</contrib-id>
+       <name name-style="western">
+           <surname>Edmonds</surname>
+           <given-names>Ranthony A. C.</given-names>
+       </name>
+	<aff>The Ohio State University</aff><aff><institution-wrap><institution-id institution-id-type="profile_id">60003500</institution-id></institution-wrap></aff>
+	<email>edmonds.110@osu.edu</email>
+	<role>Author</role>
+   </contrib>
+   <contrib contrib-type="author" id="artseq-00004">
+       <contrib-id authenticated="false" contrib-id-type="person_id">P7395012</contrib-id><contrib-id authenticated="false" contrib-id-type="profile_id">99660646211</contrib-id>
+       <name name-style="western">
+           <surname>Edwards</surname>
+           <given-names>Parker</given-names>
+       </name>
+	<aff>University of Notre Dame</aff><aff><institution-wrap><institution-id institution-id-type="profile_id">60021508</institution-id></institution-wrap></aff>
+	<email>parker.edwards@nd.edu</email>
+	<role>Author</role>
+   </contrib>
+   <contrib contrib-type="author" id="artseq-00005">
+       <contrib-id authenticated="false" contrib-id-type="person_id">P7395013</contrib-id><contrib-id authenticated="false" contrib-id-type="profile_id">81100545954</contrib-id>
+       <name name-style="western">
+           <surname>Matthews</surname>
+           <given-names>J N</given-names>
+       </name>
+	<aff>University of Chicago</aff>
+	<email>jnmatthews@uchicago.edu</email>
+	<role>Author</role>
+   </contrib>
+   <contrib contrib-type="author" id="artseq-00006">
+       <contrib-id authenticated="false" contrib-id-type="person_id">P7395014</contrib-id><contrib-id authenticated="false" contrib-id-type="profile_id">99660648034</contrib-id>
+       <name name-style="western">
+           <surname>Pizzimenti</surname>
+           <given-names>Anthony E.</given-names>
+       </name>
+	<aff>George Mason University</aff><aff><institution-wrap><institution-id institution-id-type="profile_id">60018319</institution-id></institution-wrap></aff>
+	<email>apizzime@gmu.edu</email>
+	<role>Author</role>
+   </contrib>
+   <contrib contrib-type="author" id="artseq-00007">
+       <contrib-id authenticated="false" contrib-id-type="person_id">P7395015</contrib-id><contrib-id authenticated="false" contrib-id-type="profile_id">99660648356</contrib-id>
+       <name name-style="western">
+           <surname>Richardson</surname>
+           <given-names>Chanel</given-names>
+       </name>
+	<aff>Tufts University</aff><aff><institution-wrap><institution-id institution-id-type="profile_id">60023143</institution-id></institution-wrap></aff>
+	<email>chanel@mggg.org</email>
+	<role>Author</role>
+   </contrib>
+   <contrib contrib-type="author" id="artseq-00008">
+       <contrib-id authenticated="false" contrib-id-type="person_id">P7395016</contrib-id><contrib-id authenticated="false" contrib-id-type="profile_id">99660647622</contrib-id>
+       <name name-style="western">
+           <surname>Rule</surname>
+           <given-names>Parker</given-names>
+       </name>
+	<aff>Tufts University</aff><aff><institution-wrap><institution-id institution-id-type="profile_id">60023143</institution-id></institution-wrap></aff>
+	<email>parker.rule@tufts.edu</email>
+	<role>Author</role>
+   </contrib>
+   <contrib contrib-type="author" id="artseq-00009">
+       <contrib-id authenticated="false" contrib-id-type="person_id">P7395017</contrib-id><contrib-id authenticated="false" contrib-id-type="profile_id">99660648505</contrib-id>
+       <name name-style="western">
+           <surname>Stern</surname>
+           <given-names>Ari</given-names>
+       </name>
+	<aff>Washington University in St. Louis</aff><aff><institution-wrap><institution-id institution-id-type="profile_id">60010261</institution-id></institution-wrap></aff>
+	<email>stern@wustl.edu</email>
+	<role>Author</role>
+   </contrib>
+</contrib-group>
+   <pub-date date-type="publication">
+   <day>01</day>
+   <month>11</month>
+   <year>2022</year>
+   </pub-date>
+				<fpage>1</fpage>
+				<lpage>12</lpage>
+		<permissions>
+			<copyright-year>2022</copyright-year>
+			<copyright-holder>Owner/Author</copyright-holder>
+			<license license-type="cc by">
+			<license-p>This work is licensed under a Creative Commons Attribution International 4.0 License.</license-p>
+			</license>
+			<license license-type="open-access">
+			<license-p/>
+			</license>
+		</permissions>
+		<self-uri content-type="pdf" xlink:href="3557915.3560961.pdf"/>
+	<abstract>
+		<p>This paper is motivated by a practical problem: many U.S. states have public hearings on "communities of interest" as part of their redistricting process, but no state has as yet adopted a concrete method of spatializing and aggregating community maps in order to take them into account in the drawing of new boundaries for electoral districts. Below, we describe a year-long project that collected and synthesized thousands of community maps through partnerships with grassroots organizations and/or government offices. The submissions were then aggregated by geographical clustering with a modified Hausdorff distance; then, the text from the narrative submissions was classified with semantic labels so that short runs of a Markov chain could be used to form semantic sub-clusters. The resulting dataset is publicly available, including the raw data of submitted community maps as well as post-processed community clusters and a scoring system for measuring how well districting plans respect the clusters. We provide a discussion of the strengths and weaknesses of this methodology and conclude with proposed directions for future work.</p>
+	</abstract>
+<kwd-group>
+<kwd>clustering</kwd>
+<kwd>geospatial data</kwd>
+<kwd>redistricting</kwd>
+<kwd>regionalization</kwd>
+<kwd>semantic classification</kwd>
+</kwd-group>
+		<custom-meta-group>
+		    <custom-meta>
+		        <meta-name>rightslink</meta-name>
+		        <meta-value>excluded</meta-value>
+		    </custom-meta>
+		</custom-meta-group>
+		</book-part-meta>
+		<back>
+			<ref-list specific-use="unparsed">
+				<ref id="ref-00001">
+				<mixed-citation>Orhun Aydin, Mark V. Janikas, Renato Assun??o, and Ting-Hwan Lee. 2018. SKATER-CON: Unsupervised Regionalization via Stochastic Tree Partitioning within a Consensus Framework Using Random Spanning Trees: Research Paper. In <italic toggle="yes">Proceedings of the 2nd ACM SIGSPATIAL International Workshop on AI for Geographic Knowledge Discovery</italic> (Seattle, WA, USA) <italic toggle="yes">(GeoAI'18).</italic> Association for Computing Machinery, New York, NY, USA, 33--42. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/3281548.3281554">10.1145/3281548.3281554</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00002">
+				<mixed-citation>Amariah Becker and Justin Solomon. 2022. Redistricting Algorithms. In <italic toggle="yes">Political Geometry</italic>, Moon Duchin and Olivia Walch (Eds.). Birkh?user Books, Chapter 16, 303--340. http://mggg.org/gerrybook</mixed-citation>
+				</ref>
+				<ref id="ref-00003">
+				<mixed-citation>Philippe C. Besse, Brendan Guillouet, Jean-Michel Loubes, and Fran?ois Royer. 2016. Review and Perspective for Distance-Based Clustering of Vehicle Trajectories. <italic toggle="yes">IEEE Transactions on Intelligent Transportation Systems</italic> 17, 11 (2016), 3306--3317. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1109/TITS.2016.2547641">10.1109/TITS.2016.2547641</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00004">
+				<mixed-citation>Subhodip Biswas, Fanglan Chen, Zhiqian Chen, Andreea Sistrunk, Nathan Self, Chang-Tien Lu, and Naren Ramakrishnan. 2019. REGAL: A Regionalization Framework for School Boundaries. In <italic toggle="yes">Proceedings of the 27th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems</italic> (Chicago, IL, USA) <italic toggle="yes">(SIGSPATIAL '19).</italic> Association for Computing Machinery, New York, NY, USA, 544--547. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/3347146.3359377">10.1145/3347146.3359377</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00005">
+				<mixed-citation>Robert Chambers. 2006. Participatory Mapping and Geographic Information Systems: Whose Map? Who is Empowered and Who Disempowered? Who Gains and Who Loses? <italic toggle="yes">Electronic Journal on Information Systems in Developing Countries</italic> 25, 2 (2006), 1--11.</mixed-citation>
+				</ref>
+				<ref id="ref-00006">
+				<mixed-citation>Sandra J. Chen, Samuel S.-H. Wang, Bernard Grofman, Richard F. Ober, Kyle T. Barnes Jr., and Jonathan R. Cervas. 2022. Turning communities of interest into a rigorous standard for redistricting. <italic toggle="yes">Stanford Journal of Civil Rights and Civil Liberties</italic> 18, 1 (2022), 101--189.</mixed-citation>
+				</ref>
+				<ref id="ref-00007">
+				<mixed-citation>Aloni Cohen, Moon Duchin, JN Matthews, and Bhushan Suwal. 2021. Census TopDown: The Impacts of Differential Privacy on Redistricting. In <italic toggle="yes">2nd Symposium on Foundations of Responsible Computing (FORC 2021) (Leibniz International Proceedings in Informatics (LIPIcs), Vol. 192)</italic>, Katrina Ligett and Swati Gupta (Eds.). Schloss Dagstuhl - Leibniz-Zentrum f?r Informatik, Dagstuhl, Germany, 5:1--5:22. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.4230/LIPIcs.FORC.2021.5">10.4230/LIPIcs.FORC.2021.5</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00008">
+				<mixed-citation>Vincent Cohen-Addad, Philip N. Klein, D?niel Marx, Archer Wheeler, and Christopher Wolfram. 2021. On the Computational Tractability of a Geographic Clustering Problem Arising in Redistricting. In <italic toggle="yes">2nd Symposium on Foundations of Responsible Computing (FORC 2021) (Leibniz International Proceedings in Informatics (LIPIcs), Vol. 192)</italic>, Katrina Ligett and Swati Gupta (Eds.). Schloss Dagstuhl - Leibniz-Zentrum f?r Informatik, Dagstuhl, Germany, 3:1--3:18. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.4230/LIPIcs.FORC.2021.3">10.4230/LIPIcs.FORC.2021.3</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00009">
+				<mixed-citation>Vincent Cohen-Addad, Philip N. Klein, and Neal E. Young. 2018. Balanced Centroidal Power Diagrams for Redistricting. In <italic toggle="yes">Proceedings of the 26th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems</italic> (Seattle, Washington) <italic toggle="yes">(SIGSPATIAL '18).</italic> Association for Computing Machinery, New York, NY, USA, 389--396. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/3274895.3274979">10.1145/3274895.3274979</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00010">
+				<mixed-citation>Daryl DeFord and Moon Duchin. 2022. Random walks and the universe of districting plans. In <italic toggle="yes">Political Geometry</italic>, Moon Duchin and Olivia Walch (Eds.). Birkh?user Books, Chapter 17, 341--381. http://mggg.org/gerrybook</mixed-citation>
+				</ref>
+				<ref id="ref-00011">
+				<mixed-citation>Marie-Pierre Dubuisson and Anil K. Jain. 1994. A modified Hausdorff distance for object matching. In <italic toggle="yes">Proceedings of the 12th IAPR International Conference on Pattern Recognition</italic>, Vol. 1. IEEE Computer Soc., Los Alamitos, CA, 566--568. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1109/ICPR.1994.576361">10.1109/ICPR.1994.576361</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00012">
+				<mixed-citation>Brennan Center for Justice. 2010. Communities of Interest. <italic toggle="yes">Brennan Center</italic> (2010). https://www.brennancenter.org/sites/default/files/analysis/6%20Communities%20of%20Interest.pdf</mixed-citation>
+				</ref>
+				<ref id="ref-00013">
+				<mixed-citation>James G. Gimpel and Laurel Harbridge-Yong. 2020. Conflicting Goals of Redistricting: Do Districts That Maximize Competition Reckon with Communities of Interest? <italic toggle="yes">Election Law Journal</italic> 19, 4 (2020), 451--471.</mixed-citation>
+				</ref>
+				<ref id="ref-00014">
+				<mixed-citation>Robert E. Helbig, Patrick K. Orr, and Robert R. Roediger. 1972. Political Redistricting by Computer. <italic toggle="yes">Commun. ACM</italic> 15, 8 (aug 1972), 735--741. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/361532.361543">10.1145/361532.361543</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00015">
+				<mixed-citation>Christian Hennig. 2007. Cluster-wise assessment of cluster stability. <italic toggle="yes">Comput. Statist. Data Anal.</italic> 52, 1 (2007), 258--271. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1016/j.csda.2006.11.025">10.1016/j.csda.2006.11.025</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00016">
+				<mixed-citation>Matthew Honnibal, Ines Montani, Sofie Van Landeghem, and Adriane Boyd. 2020. spaCy: Industrial-strength Natural Language Processing in Python. (2020). <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.5281/zenodo.1212303">10.5281/zenodo.1212303</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00017">
+				<mixed-citation>Deepti Joshi, Ashok Samal, and Leen-Kiat Soh. 2009. A Dissimilarity Function for Clustering Geospatial Polygons. In <italic toggle="yes">Proceedings of the 17th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems</italic> (Seattle, Washington) <italic toggle="yes">(GIS '09).</italic> Association for Computing Machinery, New York, NY, USA, 384--387. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/1653771.1653825">10.1145/1653771.1653825</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00018">
+				<mixed-citation>Harry A. Levin and Sorelle A. Friedler. 2019. Automated Congressional Redistricting. <italic toggle="yes">ACM J. Exp. Algorithmics</italic> 24, Article 1.10 (apr 2019), 24 pages. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/3316513">10.1145/3316513</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00019">
+				<mixed-citation>Karin MacDonald and Bruce E. Cain. 2013. Community of Interest Methodology and Public Testimony. <italic toggle="yes">U.C. Irvine Law Review</italic> 3, 3 (2013), 609--636.</mixed-citation>
+				</ref>
+				<ref id="ref-00020">
+				<mixed-citation>S.C. Madeira and A.L. Oliveira. 2004. Biclustering algorithms for biological data analysis: a survey. <italic toggle="yes">IEEE/ACM Transactions on Computational Biology and Bioinformatics</italic> 1, 1 (2004), 24--45. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1109/TCBB.2004.2">10.1109/TCBB.2004.2</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00021">
+				<mixed-citation>Todd Makse. 2012. Defining Communities of Interest in Redistricting Through Initiative Voting. <italic toggle="yes">Election Law Journal</italic> 11, 4 (2012), 503--517.</mixed-citation>
+				</ref>
+				<ref id="ref-00022">
+				<mixed-citation>D. Min, L. Zhilin, and C. Xiaoyong. 2007. Extended Hausdorff distance for spatial objects in GIS. <italic toggle="yes">International Journal of Geographical Information Science</italic> 21, 4 (2007), 459--475. arXiv:https://doi.org/10.1080/13658810601073315 <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1080/13658810601073315">10.1080/13658810601073315</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00023">
+				<mixed-citation>Pradeep Mohan, Shashi Shekhar, James A. Shine, James P. Rogers, Zhe Jiang, and Nicole Wayant. 2011. A Neighborhood Graph Based Approach to Regional Co-Location Pattern Discovery: A Summary of Results. In <italic toggle="yes">Proceedings of the 19th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems</italic> (Chicago, Illinois) <italic toggle="yes">(GIS '11).</italic> Association for Computing Machinery, New York, NY, USA, 122--132. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/2093973.2093991">10.1145/2093973.2093991</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00024">
+				<mixed-citation>Garrett Dash Nelson. 2022. The Elusive Geography of Communities. In <italic toggle="yes">Political Geometry</italic>, Moon Duchin and Olivia Walch (Eds.). Birkh?user Books, Chapter 11, 221--234. http://mggg.org/gerrybook</mixed-citation>
+				</ref>
+				<ref id="ref-00025">
+				<mixed-citation>Maria Angela Pellegrino, Luca Postiglione, and Vittorio Scarano. 2021. Detecting Data Accuracy Issues in Textual Geographical Data by a Clustering-Based Approach. In <italic toggle="yes">8th ACM IKDD CODS and 26th COMAD</italic> (Bangalore, India) <italic toggle="yes">(CODS COMAD 2021).</italic> Association for Computing Machinery, New York, NY, USA, 208--212. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/3430984.3431031">10.1145/3430984.3431031</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00026">
+				<mixed-citation>Daniel W. Phillips and Daniel R. Montello. 2017. Defining the community of interest as thematic and cognitive regions. <italic toggle="yes">Political Geography</italic> 61 (2017), 31--45.</mixed-citation>
+				</ref>
+				<ref id="ref-00027">
+				<mixed-citation>Heather Rosenfeld and Moon Duchin. 2022. Explainer: Communities of Interest. In <italic toggle="yes">Political Geometry</italic>, Moon Duchin and Olivia Walch (Eds.). Birkh?user Books, Chapter 16, 235--245. http://mggg.org/gerrybook</mixed-citation>
+				</ref>
+				<ref id="ref-00028">
+				<mixed-citation>Zachary Schutzman. 2020. <italic toggle="yes">Trade-Offs in Fair Redistricting.</italic> Association for Computing Machinery, New York, NY, USA, 159--165. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/3375627.3375802">10.1145/3375627.3375802</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00029">
+				<mixed-citation>Christian Sengstock and Michael Gertz. 2011. Exploration and Comparison of Geographic Information Sources Using Distance Statistics. In <italic toggle="yes">Proceedings of the 19th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems</italic> (Chicago, Illinois) <italic toggle="yes">(GIS '11).</italic> Association for Computing Machinery, New York, NY, USA, 329--338. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/2093973.2094017">10.1145/2093973.2094017</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00030">
+				<mixed-citation>Seth E. Spielman and Alex Singleton. 2015. Studying Neighborhoods Using Uncertain Data from the American Community Survey: A Contextual Approach. <italic toggle="yes">Annals of the Association of American Geographers</italic> 105, 5 (2015), 1003--1025.</mixed-citation>
+				</ref>
+				<ref id="ref-00031">
+				<mixed-citation>Alma Steingart. 2022. Law, computing and redistricting in the 1960s. In <italic toggle="yes">Political Geometry</italic>, Moon Duchin and Olivia Walch (Eds.). Birkh?user Books, Chapter 8, 163--177. http://mggg.org/gerrybook</mixed-citation>
+				</ref>
+				<ref id="ref-00032">
+				<mixed-citation>Nicholas O. Stephanopoulos. 2012. Spatial Diversity. <italic toggle="yes">Election Law Journal</italic> 160, 5 (2012), 1379--1477.</mixed-citation>
+				</ref>
+				<ref id="ref-00033">
+				<mixed-citation>Alexander Strehl and Joydeep Ghosh. 2003. Cluster Ensembles --- a Knowledge Reuse Framework for Combining Multiple Partitions. <italic toggle="yes">J. Mach. Learn. Res.</italic> 3, null (mar 2003), 583--617. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1162/153244303321897735">10.1162/153244303321897735</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00034">
+				<mixed-citation>Robert Vargas. 2016. <italic toggle="yes">Wounded city: Violent turf wars in a Chicago barrio</italic> (1st ed.). Oxford University Press, New York, NY.</mixed-citation>
+				</ref>
+				<ref id="ref-00035">
+				<mixed-citation>Dongjie Wang, Yanjie Fu, Kunpeng Liu, Fanglan Chen, Pengyang Wang, and Chang-Tien Lu. 2022. Automated Urban Planning for Reimagining City Configuration via Adversarial Learning: Quantification, Generation, and Evaluation. <italic toggle="yes">ACM Trans. Spatial Algorithms Syst.</italic> (mar 2022). Just Accepted. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/3524302">10.1145/3524302</pub-id></mixed-citation>
+				</ref>
+				<ref id="ref-00036">
+				<mixed-citation>Archer Wheeler and Philip N. Klein. 2020. The Impact of Highly Compact Algorithmic Redistricting on the Rural-versus-Urban Balance. In <italic toggle="yes">Proceedings of the 28th International Conference on Advances in Geographic Information Systems</italic> (Seattle, WA, USA) <italic toggle="yes">(SIGSPATIAL '20).</italic> Association for Computing Machinery, New York, NY, USA, 397--400. <pub-id assigning-authority="crossref" pub-id-type="doi" xlink:href="10.1145/3397536.3422249">10.1145/3397536.3422249</pub-id></mixed-citation>
+				</ref>
+			</ref-list>
+		</back>
+	</book-part>
+</book-part-wrapper>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DISS_submission publishing_option="0" embargo_code="0" third_party_search="Y">
+  <DISS_authorship>
+    <DISS_author type="primary">
+      <DISS_name>
+        <DISS_surname>Chen</DISS_surname>
+        <DISS_fname>Mohan</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+      <DISS_contact type="future">
+        <DISS_contact_effdt>05/03/2021</DISS_contact_effdt>
+        <DISS_address>
+          <DISS_addrline>25 Quincy st</DISS_addrline>
+          <DISS_addrline>Unit2</DISS_addrline>
+          <DISS_city>Medford</DISS_city>
+          <DISS_st>MA</DISS_st>
+          <DISS_pcode>02155</DISS_pcode>
+          <DISS_country>US</DISS_country>
+        </DISS_address>
+        <DISS_email>chirscmh@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_citizenship/>
+    </DISS_author>
+  </DISS_authorship>
+  <DISS_description page_count="53" type="masters" external_id="http://dissertations.umi.com/tuftsase:12759" apply_for_copyright="no">
+    <DISS_title>The Environmental and Health Impact of an Emission Trading Scheme for Sulfur Dioxide in China</DISS_title>
+    <DISS_dates>
+      <DISS_comp_date>2021</DISS_comp_date>
+      <DISS_accept_date>01/01/2021</DISS_accept_date>
+    </DISS_dates>
+    <DISS_degree>M.S.</DISS_degree>
+    <DISS_institution>
+      <DISS_inst_code>0234</DISS_inst_code>
+      <DISS_inst_name>Tufts University (Graduate Studies Arts, Sciences and Engineering)</DISS_inst_name>
+      <DISS_inst_contact>Economics</DISS_inst_contact>
+      <DISS_processing_code>M</DISS_processing_code>
+    </DISS_institution>
+    <DISS_advisor>
+      <DISS_name>
+        <DISS_surname>Metcalf</DISS_surname>
+        <DISS_fname>Gilbert</DISS_fname>
+        <DISS_middle/>
+      </DISS_name>
+    </DISS_advisor>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Chakravorty</DISS_surname>
+        <DISS_fname>Ujjayant</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Melissa</DISS_surname>
+        <DISS_fname>McInerney</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_categorization>
+      <DISS_category>
+        <DISS_cat_code>0438</DISS_cat_code>
+        <DISS_cat_desc>Environmental economics</DISS_cat_desc>
+      </DISS_category>
+      <DISS_keyword>China, Environmental , Health, Sulfur Dioxide</DISS_keyword>
+      <DISS_language>en</DISS_language>
+    </DISS_categorization>
+  </DISS_description>
+  <DISS_content>
+    <DISS_abstract>
+      <DISS_para>In this thesis, I investigate the reduction impact of emission trading scheme (ETS) for SO2 in China. The generalized synthetic control method estimates a 10% reduction after ETS&#8217;s enactment, which is lower than the 12% reduction impact estimated by the previous literature. The difference can be explained by the pre-trend that exists in the implement and non-implement provinces. I also find out the policy has brought unintended health impacts. The probability of getting heart-related diseases declines by 1.1% in the implementing area if holding other variables constant.</DISS_para>
+    </DISS_abstract>
+    <DISS_binary type="PDF">Chen_tuftsase_0234M_12759.pdf</DISS_binary>
+  </DISS_content>
+  <DISS_restriction/>
+  <DISS_repository>
+    <DISS_version/>
+    <DISS_agreement_decision_date/>
+    <DISS_acceptance>0</DISS_acceptance>
+    <DISS_delayed_release/>
+    <DISS_access_option/>
+  </DISS_repository>
+  <DISS_creative_commons_license>
+    <DISS_abbreviation/>
+  </DISS_creative_commons_license>
+</DISS_submission>
