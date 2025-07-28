@@ -9,3 +9,5 @@ A metadata manager to transform batches of metadata and digital objects for repo
 * openpyxl
 * lxlm
 * python-magic-bin
+
+*Metamorph* can be launched from the command line with 'python metamorph.py'. From MacOS or Linux, it should be possible to launch by clicking on metamorph.py as an application.
