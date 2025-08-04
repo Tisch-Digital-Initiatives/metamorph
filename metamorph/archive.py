@@ -34,6 +34,7 @@
 # an +Archive+.
 import os
 from os import path
+import subprocess
 import time
 import shutil
 import glob
@@ -106,7 +107,7 @@ class ArchiveDirectory(Archive):
         if not self.ismember(fullpath):
             raise FileNotFoundError(
                 'Path specifies a location outside the Archive')
-        os.startfile(fullpath)
+        subprocess.call(fullpath, shell=True)
     
     def delete(self):
         if self.getmode() == 'w':

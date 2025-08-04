@@ -128,8 +128,8 @@ class Batch:
         answer = ui.yesno(
             "\nWould you like to open the transformed xml?", 'y')
         if answer:
-            self.outarchive.start(xml_file)
             self.outarchive.start('subjects.txt')
+            self.outarchive.start(xml_file)
             
     def xsl_transform(self, inpath, outpath, xslt):
         ui.log("doing transform")
