@@ -1,0 +1,3 @@
+*.pyc
+test_samples/*_processed
+test_samples/*_processed_*

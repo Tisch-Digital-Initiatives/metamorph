@@ -51,6 +51,10 @@ class Interface:
             input = self.question(text, prompt).lower()
     
     def multiple_choice(self, text, choices):
+        if len(choices) == 0:
+            return(None)
+        elif len(choices) == 1:
+            return(choices[0])
         self.message('')
         self.message(text)
         for entry in choices:

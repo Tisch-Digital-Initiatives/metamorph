@@ -245,7 +245,7 @@
     <xsl:template match="@tag" name="language">
         <dc11:language>
             <xsl:value-of
-                select="normalize-space(marc:controlfield[@tag = '008']/replace(., '(.*)(\w{3})(\s.${2}|\s${1})', '$2'))"
+                select="normalize-space(marc:controlfield[@tag = '008']/replace(., '(.{35})(\w{3}).*', '$2'))"
             />
         </dc11:language>
     </xsl:template>

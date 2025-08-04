@@ -1,28 +1,76 @@
 import os
+from io import BytesIO
+import pymarc
+from pymarc import exceptions as exc
 
-from .interface import Interface
 from .archive import ArchiveDirectory
 from .batch import Batch
+from .xmldoc import Xmldoc
 from . import config
 
 
 class BatchInHouse(Batch):
     def batchit(self):
         self.package()
-        files = self.outarchive.glob('xml/*.xml')
-        if len(files) > 1:
-            config.ui.message('\nDirectory contains more than 1 XML file')
-            input_xml = config.ui.multiple_choice(
-                'Which is the XML file containing the metadata for ingest?',
+        xml = None
+        files = self.inarchive.glob('**/*.mrc')
+        input_file = config.ui.multiple_choice(
+            'Directory contains more than 1 MARC file\n' +
+            'Which is the MARC file containing the metadata for ingest?',
+            files)
+        if not input_file:
+            files = self.inarchive.glob('**/*.dat')
+            input_file = config.ui.multiple_choice(
+                'Directory contains more than 1 DAT file\n' +
+                'Which is the DAT file containing the metadata for ingest?',
                 files)
+        if input_file:
+            mrc = self.inarchive.read_member(input_file, binary=True)
+            reader = pymarc.reader.MARCReader(mrc, to_unicode=True)
         else:
-            input_xml = files[0]
-        config.ui.message('input file = ' + input_xml)
-        
+            files = self.inarchive.glob('**/*.mrk') 
+            input_file = config.ui.multiple_choice(
+                'Directory contains more than 1 MRK file\n' +
+               'Which is the MRK file containing the metadata for ingest?',
+                files)
+            if input_file:
+                mrc = self.inarchive.read_member(input_file, binary=False)
+                reader = pymarc.reader.MARCMakerReader(mrc)
+        if input_file:
+            memory = BytesIO()
+            writer = pymarc.writer.XMLWriter(memory)
+            for record in reader:
+                if record:
+                    writer.write(record)
+                elif isinstance(reader.current_exception, exc.FatalReaderError):
+                    # data file format error
+                    # reader will raise StopIteration
+                    print(reader.current_exception)
+                    print(reader.current_chunk)
+                else:
+                    # fix the record data, skip or stop reading:
+                    print(reader.current_exception)
+                    print(reader.current_chunk)
+                    # break/continue/raise
+            writer.close(close_fh=False)
+            xml = memory.getvalue().decode('utf-8')
+        else:
+            files = self.inarchive.glob('**/*.xml')
+            input_file = config.ui.multiple_choice(
+                'Directory contains more than 1 DAT file\n' +
+                'Which is the DAT file containing the metadata for ingest?',
+                files)
+            if input_file:
+                xml = self.inarchive.read_member(input_file, binary=True)
+                xml = xml.decode('utf-8')
+            else:
+                config.ui.message('No MARC files in this archive')
+                return
+        xdoc = Xmldoc(xml)
         xslt = os.path.join(config.xsltdir, 'inhouse.xslt')
-        self.xsl_transform(input_xml, 'Ingest_Me.xml', xslt)
-        ingest = self.outarchive.read_member('Ingest_Me.xml')
-        subjects = self.extract_subjects(ingest)
+        output = xdoc.apply_xslt(xslt) 
+        self.outarchive.write_member('Ingest_Me.xml', output)
+        subjects = self.extract_subjects(output)
         self.qa_it('Ingest_Me.xml')
 
 
