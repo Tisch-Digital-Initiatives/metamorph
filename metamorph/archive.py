@@ -107,7 +107,7 @@ class ArchiveDirectory(Archive):
         if not self.ismember(fullpath):
             raise FileNotFoundError(
                 'Path specifies a location outside the Archive')
-        subprocess.call(fullpath, shell=True)
+        subprocess.Popen(fullpath, shell=True)
     
     def delete(self):
         if self.getmode() == 'w':
