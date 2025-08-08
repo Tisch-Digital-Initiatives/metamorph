@@ -381,7 +381,7 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
         <tufts:internal_note>Original file name: <xsl:value-of select="normalize-space(Filename)"/>
         </tufts:internal_note>
     </xsl:template>
-    <xsl:template match="Rights_Note" name="rights">
+    <xsl:template match="Rights" name="rights">
         <dc11:rights>
             <xsl:value-of select="normalize-space(Rights_Note)"/>
         </dc11:rights>
@@ -391,13 +391,13 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
             <xsl:value-of select="normalize-space(Embargo_Release_Date)"/>
         </tufts:embargo_release_date>
     </xsl:template>
-    <xsl:template match="Rights" name="license">
+    <xsl:template match="License" name="license">
         <xsl:choose>
             <xsl:when test="Process[contains(text(), 'Trove')]">
                 <edm:rights>http://sites.tufts.edu/dca/about-us/research-help/reproductions-and-use/</edm:rights>
             </xsl:when>
             <xsl:otherwise>
-                <edm:rights><xsl:value-of select="normalize-space(Rights)"/></edm:rights>
+                <edm:rights><xsl:value-of select="normalize-space(License)"/></edm:rights>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>

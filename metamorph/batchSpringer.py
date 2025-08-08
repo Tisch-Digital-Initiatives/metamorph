@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 from .interface import Interface
 from .archive import ArchiveDirectory
@@ -18,10 +19,12 @@ class BatchSpringer(Batch):
         
         coll = self.outarchive.glob('**/*.xml')
         xslt = os.path.join(config.xsltdir, 'Springer.xslt')
-        self.xsl_transform(coll, 'Ingest_Me.xml', xslt)
-        ingest = self.outarchive.read_member('Ingest_Me.xml')
-        subjects = self.extract_subjects(ingest)
-        self.qa_it('Ingest_Me.xml')
+        now = datetime.now()
+        outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_Springer_Ingest.xml'
+        self.xsl_transform(coll, outfile, xslt)
+        ingest = self.outarchive.read_member(outfile)
+        self.extract_subjects(ingest)
+        self.qa_it(outfile)
 
 
 if __name__ == '__main__':

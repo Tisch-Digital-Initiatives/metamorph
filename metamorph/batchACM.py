@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 from .batch import Batch
 from .archive import ArchiveDirectory
@@ -9,10 +10,12 @@ class BatchACM(Batch):
     def batchit(self):
         self.package()
         xslt = os.path.join(config.xsltdir, 'ACM.xslt')
-        self.xsl_transform(r"xml\mets.xml", 'Ingest_Me.xml', xslt)
-        ingest = self.outarchive.read_member('Ingest_Me.xml')
-        subjects = self.extract_subjects(ingest)
-        self.qa_it('Ingest_Me.xml')
+        now = datetime.now()
+        outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_Springer_Ingest.xml'
+        self.xsl_transform(r"xml\mets.xml", outfile, xslt)
+        ingest = self.outarchive.read_member(outfile)
+        self.extract_subjects(ingest)
+        self.qa_it(outfile)
 
 
 if __name__ == '__main__':

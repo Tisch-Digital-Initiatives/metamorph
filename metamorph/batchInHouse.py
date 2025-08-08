@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from io import BytesIO
 import pymarc
 from pymarc import exceptions as exc
@@ -69,9 +70,11 @@ class BatchInHouse(Batch):
         xdoc = Xmldoc(xml)
         xslt = os.path.join(config.xsltdir, 'inhouse.xslt')
         output = xdoc.apply_xslt(xslt) 
-        self.outarchive.write_member('Ingest_Me.xml', output)
-        subjects = self.extract_subjects(output)
-        self.qa_it('Ingest_Me.xml')
+        now = datetime.now()
+        outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_MARC_Ingest.xml'
+        self.outarchive.write_member(outfile, output)
+        self.extract_subjects(output)
+        self.qa_it(outfile)
 
 
 if __name__ == '__main__':

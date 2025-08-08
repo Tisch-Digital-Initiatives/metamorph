@@ -13,7 +13,6 @@
 # archive sources.
 import os
 from os import path
-import tempfile
 
 from .archive import Archive, ArchiveDirectory
 from .xmldoc import Xmldoc
@@ -41,7 +40,9 @@ class Batch:
         if not outarchive:
             odir = ui.question(
                 'Specify an output directory name (blank for default)')
-            while odir and not os.path.exists(odir):
+            curdir = os.getcwd()
+            os.chdir(os.path.dirname(adir))
+            while odir and os.path.exists(odir):
                 odir = ui.question(
                     'That directory already exists \
                     \n\nSpecify an output directory name (blank for default)')
@@ -56,7 +57,7 @@ class Batch:
                     n = n + 1
                     odir = '_'.join([odirroot, str(n)])
                 self.outarchive = ArchiveDirectory(odir, 'w')
-        ui.log('\nOutput can be found in ' + self.outarchive.getroot())
+            os.chdir(curdir)
     
     # Defines context manager, allows Batch to be used in 'with' statements
     def __enter__(self):
@@ -119,8 +120,7 @@ class Batch:
         collection = '<?xml version=\'1.0\' encoding = \'UTF-8\'?>\n'
         collection += '<collection>\n'
         for f in xmlfiles:
-            path = os.path.basename(f)
-            collection += '    <doc href=\'' + path + '\'/>\n'
+            collection += '    <doc href=\'' + f + '\'/>\n'
         collection += '</collection>\n'
         return collection
     
@@ -128,33 +128,24 @@ class Batch:
         answer = ui.yesno(
             "\nWould you like to open the transformed xml?", 'y')
         if answer:
-            self.outarchive.start('subjects.txt')
-            self.outarchive.start(xml_file)
+            self.outarchive.launch('subjects.txt')
+            self.outarchive.launch(xml_file)
             
     def xsl_transform(self, inpath, outpath, xslt):
         ui.log("doing transform")
-        with tempfile.TemporaryDirectory() as tmpdir:
-            curdir = os.getcwd()
-            os.chdir(tmpdir)
-            if isinstance(inpath, str):
-                content = self.outarchive.read_member(inpath)
-                filename = os.path.basename(inpath)
-                with open(filename, 'w') as file:
-                    file.write(content)
-            else:
-                for f in inpath:
-                    content = self.outarchive.read_member(f, binary=True)
-                    with open(os.path.basename(f), 'wb') as file:
-                        file.write(content)
-                content = self.__collection(inpath)
-                filename = 'collection.xml'
-                with open(filename, 'w') as file:
-                    file.write(content)
-            xdoc = Xmldoc(content)
-            output = xdoc.apply_xslt(xslt)
-            output = output.encode(encoding='utf-8')
-            self.outarchive.write_member(outpath, output)
-            os.chdir(curdir)
+        if isinstance(inpath, str):
+            content = self.outarchive.read_member(inpath)
+        else:
+            paths = []
+            for f in inpath:
+                path = os.path.join(self.outarchive.getroot(), f)
+                path = path.replace('\\', '/')
+                paths.append(path)
+            content = self.__collection(paths)
+        xdoc = Xmldoc(content)
+        output = xdoc.apply_xslt(xslt)
+        output = output.encode(encoding='utf-8')
+        self.outarchive.write_member(outpath, output)
     
     def extract_subjects(self, file):
         xdoc = Xmldoc(file)

@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 import io
 import re
 import pandas
@@ -61,10 +62,12 @@ class BatchExcel(Batch):
         xslt = os.path.join(config.xsltdir, 'excel_to_dc.xslt')
         output = xdoc.apply_xslt(xslt)
         output = output.encode(encoding='utf-8')
-        self.outarchive.write_member('Ingest_Me.xml', output)
-        content = self.outarchive.read_member('Ingest_me.xml')
-        subjects = self.extract_subjects(content)
-        self.qa_it('Ingest_Me.xml')
+        now = datetime.now()
+        outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_Excel_Ingest.xml'
+        self.outarchive.write_member(outfile, output)
+        content = self.outarchive.read_member(outfile)
+        self.extract_subjects(content)
+        self.qa_it(outfile)
 
 
 if __name__ == '__main__':

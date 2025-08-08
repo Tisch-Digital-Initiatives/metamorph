@@ -35,6 +35,7 @@
 import os
 from os import path
 import subprocess
+import platform
 import time
 import shutil
 import glob
@@ -101,13 +102,17 @@ class ArchiveDirectory(Archive):
             raise FileNotFoundError(
                 'Path specifies a location outside the Archive')
         return os.path.exists(fullpath)
-   
-    def start(self, relpath):
+    
+    def launch(self, relpath):
         fullpath = self._pathto(relpath)
         if not self.ismember(fullpath):
             raise FileNotFoundError(
                 'Path specifies a location outside the Archive')
-        subprocess.Popen(fullpath, shell=True)
+        system = platform.system()
+        if system == 'Windows':
+            subprocess.Popen('start ' + fullpath, shell=True)
+        if system == 'Darwin' or system == 'Linux':
+            subprocess.Popen('open ' + fullpath, shell=True)
     
     def delete(self):
         if self.getmode() == 'w':
