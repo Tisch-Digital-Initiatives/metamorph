@@ -254,7 +254,126 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-
+    <!-- this portion of the XSLT creates a named template for memberOf, identifies delimiters from the input file and splits them into seperate tufts:memberOf elements-->
+    <xsl:template name="memberOfSplit" match="text()">
+        <xsl:param name="memberOfText" select="."/>
+        <xsl:if test="string-length($memberOfText)">
+            <xsl:if test="not($memberOfText = .)"> </xsl:if>
+            <tufts:memberOf>
+                <xsl:value-of
+                    select="normalize-space(substring-before(concat($memberOfText, '|'), '|'))"
+                />
+            </tufts:memberOf>
+            <xsl:call-template name="memberOfSplit">
+                <xsl:with-param name="memberOfText" select="substring-after($memberOfText, '|')"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <!-- this portion of the XSLT creates a named template for doi, identifies delimiters from the input file and splits them into seperate bibframe:doi elements-->
+    <xsl:template name="doiSplit" match="text()">
+        <xsl:param name="doiText" select="."/>
+        <xsl:if test="string-length($doiText)">
+            <xsl:if test="not($doiText = .)"> </xsl:if>
+            <bibframe:doi>
+                <xsl:value-of
+                    select="normalize-space(substring-before(concat($doiText, '|'), '|'))"
+                />
+            </bibframe:doi>
+            <xsl:call-template name="doiSplit">
+                <xsl:with-param name="doiText" select="substring-after($doiText, '|')"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <!-- this portion of the XSLT creates a named template for isbn, identifies delimiters from the input file and splits them into seperate bibframe:isbn elements-->
+    <xsl:template name="isbnSplit" match="text()">
+        <xsl:param name="isbnText" select="."/>
+        <xsl:if test="string-length($isbnText)">
+            <xsl:if test="not($isbnText = .)"> </xsl:if>
+            <bibframe:isbn>
+                <xsl:value-of
+                    select="normalize-space(substring-before(concat($isbnText, '|'), '|'))"
+                />
+            </bibframe:isbn>
+            <xsl:call-template name="isbnSplit">
+                <xsl:with-param name="isbnText" select="substring-after($isbnText, '|')"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <!-- this portion of the XSLT creates a named template for oclc, identifies delimiters from the input file and splits them into seperate tufts:oclc elements-->
+    <xsl:template name="oclcSplit" match="text()">
+        <xsl:param name="oclcText" select="."/>
+        <xsl:if test="string-length($oclcText)">
+            <xsl:if test="not($oclcText = .)"> </xsl:if>
+            <tufts:oclc>
+                <xsl:value-of
+                    select="normalize-space(substring-before(concat($oclcText, '|'), '|'))"
+                />
+            </tufts:oclc>
+            <xsl:call-template name="oclcSplit">
+                <xsl:with-param name="oclcText" select="substring-after($oclcText, '|')"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <!-- this portion of the XSLT creates a named template for extent, identifies delimiters from the input file and splits them into seperate dc:extent elements-->
+    <xsl:template name="extentSplit" match="text()">
+        <xsl:param name="extentText" select="."/>
+        <xsl:if test="string-length($extentText)">
+            <xsl:if test="not($extentText = .)"> </xsl:if>
+            <dc:extent>
+                <xsl:value-of
+                    select="normalize-space(substring-before(concat($extentText, '|'), '|'))"
+                />
+            </dc:extent>
+            <xsl:call-template name="extentSplit">
+                <xsl:with-param name="extentText" select="substring-after($extentText, '|')"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <!-- this portion of the XSLT creates a named template for intnote, identifies delimiters from the input file and splits them into seperate tufts:internal_note elements-->
+    <xsl:template name="intnoteSplit" match="text()">
+        <xsl:param name="intnoteText" select="."/>
+        <xsl:if test="string-length($intnoteText)">
+            <xsl:if test="not($intnoteText = .)"> </xsl:if>
+            <tufts:internal_note>
+                <xsl:value-of
+                    select="normalize-space(substring-before(concat($intnoteText, '|'), '|'))"
+                />
+            </tufts:internal_note>
+            <xsl:call-template name="intnoteSplit">
+                <xsl:with-param name="intnoteText" select="substring-after($intnoteText, '|')"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <!-- this portion of the XSLT creates a named template for qrnote, identifies delimiters from the input file and splits them into seperate tufts:qr_note elements-->
+    <xsl:template name="qrnoteSplit" match="text()">
+        <xsl:param name="qrnoteText" select="."/>
+        <xsl:if test="string-length($qrnoteText)">
+            <xsl:if test="not($qrnoteText = .)"> </xsl:if>
+            <tufts:qr_note>
+                <xsl:value-of
+                    select="normalize-space(substring-before(concat($qrnoteText, '|'), '|'))"
+                />
+            </tufts:qr_note>
+            <xsl:call-template name="qrnoteSplit">
+                <xsl:with-param name="qrnoteText" select="substring-after($qrnoteText, '|')"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <!-- this portion of the XSLT creates a named template for is_part_of, identifies delimiters from the input file and splits them into seperate dc:isPartOf elements-->
+    <xsl:template name="partOfSplit" match="text()">
+        <xsl:param name="partOfText" select="."/>
+        <xsl:if test="string-length($partOfText)">
+            <xsl:if test="not($partOfText = .)"> </xsl:if>
+            <dc:isPartOf>
+                <xsl:value-of
+                    select="normalize-space(substring-before(concat($partOfText, '|'), '|'))"
+                />
+            </dc:isPartOf>
+            <xsl:call-template name="partOfSplit">
+                <xsl:with-param name="partOfText" select="substring-after($partOfText, '|')"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
     <!-- this portion of the XSLT creates a named template for Table of Contents, identifies delimiters from the input file and splits them into seperate dc:tableOfContents elements -->
     <xsl:template name="tocSplit" match="text()">
         <xsl:param name="tocText" select="."/>

@@ -46,6 +46,7 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
                                 <xsl:call-template name="creator"/>
                                 <xsl:call-template name="contributor"/>
                                 <xsl:call-template name="description"/>
+                                <xsl:call-template name="creatorDept"/>
                                 <xsl:call-template name="source_bibliographicCitation"/>
                                 <xsl:call-template name="bibliographicCitation"/>
                                 <xsl:call-template name="is_part_of"/>
@@ -56,6 +57,12 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
                                 </dc:created>
                                 <xsl:call-template name="type"/>
                                 <xsl:call-template name="format"/>
+                                <xsl:call-template name="doi"/>
+                                <xsl:call-template name="isbn"/>
+                                <xsl:call-template name="oclc"/>
+                                <xsl:call-template name="extent"/>
+                                <xsl:call-template name="intnote"/>
+                                <xsl:call-template name="qrnote"/>
                                 <xsl:call-template name="subject"/>
                                 <xsl:call-template name="persname"/>
                                 <xsl:call-template name="corpname"/>
@@ -89,6 +96,15 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
     </xsl:template>
     <xsl:template match="Process" name="visibility">
         <xsl:choose>
+            <xsl:when test="Visibility = 'open'">
+                <tufts:visibility>open</tufts:visibility>
+            </xsl:when>
+            <xsl:when test="Visibility = 'restricted'">
+                <tufts:visibility>restricted</tufts:visibility>
+            </xsl:when>
+            <xsl:when test="Visibility = 'authenticated'">
+                <tufts:visibility>authenticated</tufts:visibility>
+            </xsl:when>
             <xsl:when test="Process[contains(text(), 'Trove')]">
                 <tufts:visibility>authenticated</tufts:visibility>
             </xsl:when>
@@ -123,10 +139,15 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
             <xsl:when test="Process[contains(text(), 'SMFA')]">
                 <tufts:memberOf>vq27zn406</tufts:memberOf>
             </xsl:when>
-            <xsl:otherwise>
-                <tufts:internal_note>NEW_CREATE_PROCESS_NEEDED</tufts:internal_note>
-            </xsl:otherwise>
+            <xsl:otherwise/>
         </xsl:choose>
+        <xsl:call-template name="memberOfSplit">
+            <xsl:with-param name="memberOfText">
+                <dc:alternative>
+                    <xsl:value-of select="normalize-space(Member_Of)"/>
+                </dc:alternative>
+            </xsl:with-param>
+        </xsl:call-template>
     </xsl:template>
     <xsl:template match="Format" name="has_model">
         <xsl:choose>
@@ -193,6 +214,229 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
             </xsl:with-param>
         </xsl:call-template>
     </xsl:template>
+    <xsl:template match="Creator_Department" name="creatorDept">
+        <xsl:choose>
+            <xsl:when test="Creator_Department[contains(text(), 'Fletcher')]">
+                <tufts:creator_department>Fletcher School of Law and Diplomacy.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Diplomacy, History, and Politics')]">
+                <tufts:creator_department>Fletcher School of Law and Diplomacy.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'International Law and Organization')]">
+                <tufts:creator_department>Fletcher School of Law and Diplomacy.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Economics and International Business')]">
+                <tufts:creator_department>Fletcher School of Law and Diplomacy.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Global Master of Arts Program')]">
+                <tufts:creator_department>Fletcher School of Law and Diplomacy.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Chemistry')]">
+                <tufts:creator_department>Tufts University. Department of Chemistry.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Agriculture')]">
+                <tufts:creator_department>Gerald J. &amp; Dorothy R. Friedman School of Nutrition Science and Policy.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Art')]">
+                <tufts:creator_department>Tufts University. Department of the History of Art and Architecture.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Biology')]">
+                <tufts:creator_department>Tufts University. Department of Biology.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Biomedical Engineering')]">
+                <tufts:creator_department>Tufts University. Department of Biomedical Engineering.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Biological')]">
+                <tufts:creator_department>Tufts University. Department of Chemical and Biological Engineering.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Civil')]">
+                <tufts:creator_department>Tufts University. Department of Civil and Environmental Engineering.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Classics')]">
+                <tufts:creator_department>Tufts University. Department of Classical Studies.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Classical')]">
+                <tufts:creator_department>Tufts University. Department of Classical Studies.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Computer')]">
+                <tufts:creator_department>Tufts University. Department of Computer Science.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Dance')]">
+                <tufts:creator_department>Tufts University. Department of Theatre, Dance and Performance Studies.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Drama')]">
+                <tufts:creator_department>Tufts University. Department of Theatre, Dance and Performance Studies.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Economics')]">
+                <tufts:creator_department>Tufts University. Department of Economics.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Education')]">
+                <tufts:creator_department>Tufts University. Department of Education.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Electrical')]">
+                <tufts:creator_department>Tufts University. Department of Electrical and Computer Engineering.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'English')]">
+                <tufts:creator_department>Tufts University. Department of English.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[matches(text(), 'History')]">
+                <tufts:creator_department>Tufts University. Department of History.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Mathematics')]">
+                <tufts:creator_department>Tufts University. Department of Mathematics.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Mechanical')]">
+                <tufts:creator_department>Tufts University. Department of Mechanical Engineering.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Music')]">
+                <tufts:creator_department>Tufts University. Department of Music.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Physics')]">
+                <tufts:creator_department>Tufts University. Department of Physics and Astronomy.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Romance')]">
+                <tufts:creator_department>Tufts University. Department of Romance Languages.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Psychology')]">
+                <tufts:creator_department>Tufts University. Department of Psychology.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Urban')]">
+                <tufts:creator_department>Tufts University. Department of Urban and Environmental Policy and Planning.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Child')]">
+                <tufts:creator_department>Tufts University. Eliot-Pearson Department of Child Study and Human Development.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Nutrition')]">
+                <tufts:creator_department>Gerald J. &amp; Dorothy R. Friedman School of Nutrition Science and Policy.</tufts:creator_department>
+            </xsl:when>
+			<xsl:when test="Creator_Department[contains(text(), 'Posthodontics')]">
+                <tufts:creator_department>Tufts University. School of Dental Medicine.</tufts:creator_department>
+            </xsl:when>
+			<xsl:when test="Creator_Department[contains(text(), 'Orthodontics')]">
+                <tufts:creator_department>Tufts University. School of Dental Medicine.</tufts:creator_department>
+            </xsl:when>
+			<xsl:when test="Creator_Department[contains(text(), 'Periodontology')]">
+                <tufts:creator_department>Tufts University. School of Dental Medicine.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Dental')]">
+                <tufts:creator_department>Tufts University. School of Dental Medicine.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Dentistry')]">
+                <tufts:creator_department>Tufts University. School of Dental Medicine.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Endodontics')]">
+                <tufts:creator_department>Tufts University. School of Dental Medicine.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Occupational')]">
+                <tufts:creator_department>Tufts University. Occupational Therapy Department.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Public Health')]">
+                <tufts:creator_department>Tufts University. Public Health and Professional Degree Programs.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Interdisciplinary')]">
+                <tufts:creator_department>Tufts University. Graduate School of Arts and Sciences.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when test="Creator_Department[contains(text(), 'Veterinary')]">
+                <tufts:creator_department>Cummings School of Veterinary Medicine.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Biochemistry')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Biochemistry.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Cell')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Cell, Molecular and Developmental Biology.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Cellular')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Cellular and Molecular Physiology.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Translational')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Clinical and Translational Science.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Clinical Research')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Clinical Research.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Immunology')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Immunology.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Genetics')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Genetics.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Microbiology')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Molecular Microbiology.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Neuroscience')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Neuroscience Program.</tufts:creator_department>
+            </xsl:when>
+            <xsl:when
+                test="Creator_Department[contains(text(), 'Pharmacology')]">
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Pharmacology and Drug Development.</tufts:creator_department>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+    <xsl:template match="DOI" name="doi">
+        <xsl:call-template name="doiSplit">
+            <xsl:with-param name="doiText">
+                <bibframe:doi>
+                    <xsl:value-of select="normalize-space(DOI)"/>
+                </bibframe:doi>
+            </xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template match="ISBN" name="isbn">
+        <xsl:call-template name="isbnSplit">
+            <xsl:with-param name="isbnText">
+                <bibframe:isbn>
+                    <xsl:value-of select="normalize-space(ISBN)"/>
+                </bibframe:isbn>
+            </xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template match="OCLC" name="oclc">
+        <xsl:call-template name="oclcSplit">
+            <xsl:with-param name="oclcText">
+                <tufts:oclc>
+                    <xsl:value-of select="normalize-space(OCLC)"/>
+                </tufts:oclc>
+            </xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template match="Extent" name="extent">
+        <xsl:call-template name="extentSplit">
+            <xsl:with-param name="extentText">
+                <dc:extent>
+                    <xsl:value-of select="normalize-space(Extent)"/>
+                </dc:extent>
+            </xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template match="Internal_Note" name="intnote">
+        <xsl:call-template name="intnoteSplit">
+            <xsl:with-param name="intnoteText">
+                <tufts:internal_note>
+                    <xsl:value-of select="normalize-space(Internal_Note)"/>
+                </tufts:internal_note>
+            </xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template match="QR_Note" name="qrnote">
+        <xsl:call-template name="qrnoteSplit">
+            <xsl:with-param name="qrnoteText">
+                <tufts:qr_note>
+                    <xsl:value-of select="normalize-space(QR_Note)"/>
+                </tufts:qr_note>
+            </xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+
     <xsl:template match="Source" name="source_bibliographicCitation">
         <xsl:choose>
             <xsl:when test="Process[contains(text(), 'Trove')]">
@@ -238,6 +482,13 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
             </xsl:when>
             <xsl:otherwise/>
         </xsl:choose>
+        <xsl:call-template name="partOfSplit">
+            <xsl:with-param name="partOfText">
+                <dc:isPartOf>
+                    <xsl:value-of select="normalize-space(Is_Part_Of)"/>
+                </dc:isPartOf>
+            </xsl:with-param>
+        </xsl:call-template>
     </xsl:template>
     <xsl:template match="Primary_Date" name="date">
         <xsl:call-template name="dateSplit">
@@ -373,7 +624,8 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
                         select="current-dateTime()"/>; Tisch manages metadata and binary.</tufts:internal_note>
             </xsl:when>
             <xsl:otherwise>
-                <tufts:internal_note>NEW_CREATE_PROCESS_NEEDED</tufts:internal_note>
+                <tufts:internal_note>OtherBatchIngest: <xsl:value-of 
+				select="current-dateTime()"/>; Tisch manages metadata and binary.</tufts:internal_note>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -394,7 +646,9 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
     <xsl:template match="License" name="license">
         <xsl:choose>
             <xsl:when test="Process[contains(text(), 'Trove')]">
-                <edm:rights>http://sites.tufts.edu/dca/about-us/research-help/reproductions-and-use/</edm:rights>
+                <edm:rights>
+                    https://tarc.tufts.edu/research/policies-fees/reproductions-and-use
+                </edm:rights>
             </xsl:when>
             <xsl:otherwise>
                 <edm:rights><xsl:value-of select="normalize-space(License)"/></edm:rights>

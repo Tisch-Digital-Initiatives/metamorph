@@ -13,7 +13,7 @@ from . import mira_config
 
 
 class BatchExcel(Batch):
-    def batchit(self):
+    def __init__(self, inarchive=None, outarchive=None):
         choices = {'Faculty Scholarship': 'Faculty',
                    'Student Scholarship': 'Student',
                    'Trove': 'Trove',
@@ -21,11 +21,14 @@ class BatchExcel(Batch):
                    'SMFA Artist Books': 'SMFA',
                    'Jordan Nutrition Innovation Lab': 'Jordan',
                    'Food Systems Innovation Lab': 'FoodSystems',
-                   'Nutrition Innovation Lab (Original)': 'Nutrition'}
+                   'Nutrition Innovation Lab (Original)': 'Nutrition',
+                   'Other (use only if this does not qualify for anything else)': 'Other'}
         choicename =config.ui.multiple_choice(
             'What type of Excel submission?', choices.keys())
-        process = choices[choicename]
-        
+        self.process = choices[choicename]
+        Batch.__init__(self, inarchive, outarchive)
+    
+    def batchit(self):        
         self.package()        
         files = self.outarchive.glob('excel/*.xlsx')
         if len(files) > 1:
@@ -39,12 +42,16 @@ class BatchExcel(Batch):
         metadata = pandas.read_excel(
             io.BytesIO(xsl), dtype=str, na_values=[""])
         metadata.rename(columns=mira_config.normalize_excel, inplace=True)
+        mira_columns = mira_config.base_to_MIRA.keys()
         for col in metadata.columns:
-            metadata[col] = metadata[col].str.replace("“", '"')
-            metadata[col] = metadata[col].str.replace("”", '"')
-            metadata[col] = metadata[col].str.replace("’", "'")
-            metadata[col] = metadata[col].str.replace("‘", "'")
-        metadata['Process'] = process
+            if col in mira_columns:
+                metadata[col] = metadata[col].str.replace("“", '"')
+                metadata[col] = metadata[col].str.replace("”", '"')
+                metadata[col] = metadata[col].str.replace("’", "'")
+                metadata[col] = metadata[col].str.replace("‘", "'")
+            else:
+                metadata.drop(col, axis=1, inplace=True)
+        metadata['Process'] = self.process
         metadata['Filename'] = metadata['Filename'].str.replace(" ", "_")
         metadata['Filename'] = metadata['Filename'].str.replace(".", "_")
         pattern = r'_(mp4|mp3|tif|jpg|gif|mov|wav|pdf)$'
