@@ -22,6 +22,8 @@ choices = {
     'Quit': 'quit'
     }
 
+username = config.ui.question('What is your Tufts username?')
+
 while True:
     choicename = config.ui.multiple_choice(
         '\nWhat would you like to do?', choices.keys())
@@ -29,6 +31,6 @@ while True:
     if choicename == 'Quit':
         break
     else:
-        with choices[choicename]() as batch:
+        with choices[choicename](username=username) as batch:
             batch.batchit()
         

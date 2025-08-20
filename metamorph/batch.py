@@ -13,6 +13,7 @@
 # archive sources.
 import os
 from os import path
+from datetime import datetime, timezone
 
 from .archive import Archive, ArchiveDirectory
 from .xmldoc import Xmldoc
@@ -24,8 +25,10 @@ ui = config.ui
 class Batch:
     inarchive = None
     outarchive = None
+    username = ''
     
-    def __init__(self, inarchive=None, outarchive=None):
+    def __init__(self, inarchive=None, outarchive=None, username='Anonymous'):
+        self.username = username
         if isinstance(inarchive, Archive):
             self.inarchive = inarchive
         else:
@@ -144,6 +147,11 @@ class Batch:
             content = self.__collection(paths)
         xdoc = Xmldoc(content)
         output = xdoc.apply_xslt(xslt)
+        name = self.username
+        dt = datetime.now(timezone.utc).astimezone().isoformat()
+        qr_note = "<tufts:qr_note>Metadata reviewed by: " + name + " on " + dt + "</tufts:qr_note>"
+        xdoc2 = Xmldoc(output)
+        output = xdoc2.replace_element('tufts:qr_note', qr_note)
         output = output.encode(encoding='utf-8')
         self.outarchive.write_member(outpath, output)
     

@@ -13,7 +13,7 @@ from . import mira_config
 
 
 class BatchExcel(Batch):
-    def __init__(self, inarchive=None, outarchive=None):
+    def __init__(self, inarchive=None, outarchive=None, username='Anonymous'):
         choices = {'Faculty Scholarship': 'Faculty',
                    'Student Scholarship': 'Student',
                    'Trove': 'Trove',
@@ -26,7 +26,7 @@ class BatchExcel(Batch):
         choicename =config.ui.multiple_choice(
             'What type of Excel submission?', choices.keys())
         self.process = choices[choicename]
-        Batch.__init__(self, inarchive, outarchive)
+        Batch.__init__(self, inarchive, outarchive, username)
     
     def batchit(self):        
         self.package()        

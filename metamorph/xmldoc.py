@@ -5,6 +5,21 @@ class Xmldoc():
     _root = None
     _xpathproc = None
     _xsltproc = None
+    insert = """<?xml version="1.0" encoding="UTF-8"?>
+        <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+            xmlns:tufts="http://dl.tufts.edu/terms#">
+            <!-- Identity transform -->
+            <xsl:template match="@* | node()">
+            <xsl:copy>
+                    <xsl:apply-templates select="@* | node()"/>
+                </xsl:copy>
+            </xsl:template>
+            <xsl:template match="MATCHPOINT">
+                <xsl:copy-of select="."/>
+                NEW_ELEMENT
+            </xsl:template>
+        </xsl:stylesheet>
+        """
     
     def __init__(self, file_or_buffer):
         with PySaxonProcessor(license=False) as proc:
@@ -34,6 +49,20 @@ class Xmldoc():
         for i in namespaces.keys():
             self._xpathproc.declare_namespace(i, namespaces[i])
     
+    def insert_element(self, matchpoint, element):
+        xslt_string = self.insert.replace('MATCHPOINT', matchpoint)
+        xslt_string = xslt_string.replace('NEW_ELEMENT', element)
+        return self.apply_xslt(xslt_string)
+
+    def replace_element(self, matchpoint, element):
+        xslt_string = self.insert.replace('MATCHPOINT', matchpoint)
+        xslt_string = xslt_string.replace('NEW_ELEMENT', element)
+        xslt_string = xslt_string.replace('<xsl:copy-of select="."/>', '')
+        return self.apply_xslt(xslt_string)
+    
     def apply_xslt(self, xslt):
-        xexec = self._xsltproc.compile_stylesheet(stylesheet_file=xslt)
+        if xslt.startswith('<'):
+            xexec = self._xsltproc.compile_stylesheet(stylesheet_text=xslt)
+        else:
+            xexec = self._xsltproc.compile_stylesheet(stylesheet_file=xslt)
         return xexec.transform_to_string(xdm_node=self._root)
