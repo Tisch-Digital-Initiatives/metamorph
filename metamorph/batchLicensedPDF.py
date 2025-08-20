@@ -72,7 +72,7 @@ class BatchLicensedPDF(Batch):
         output = xdoc.apply_xslt(xslt)
         now = datetime.now()
         outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_MARC_Ingest.xml'
-        self.outarchive.write_member(outfile, output)
+        self.outarchive.write_member(outfile, output.encode(encoding='utf-8'))
         self.extract_subjects(output)
         self.qa_it(outfile)
 

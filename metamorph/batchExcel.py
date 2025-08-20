@@ -68,12 +68,11 @@ class BatchExcel(Batch):
         xdoc = Xmldoc(xml)
         xslt = os.path.join(config.xsltdir, 'excel_to_dc.xslt')
         output = xdoc.apply_xslt(xslt)
-        output = output.encode(encoding='utf-8')
+        output = output
         now = datetime.now()
         outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_Excel_Ingest.xml'
-        self.outarchive.write_member(outfile, output)
-        content = self.outarchive.read_member(outfile)
-        self.extract_subjects(content)
+        self.outarchive.write_member(outfile, output.encode(encoding='utf-8'))
+        self.extract_subjects(output)
         self.qa_it(outfile)
 
 
