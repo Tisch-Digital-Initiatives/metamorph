@@ -70,12 +70,12 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <xsl:if test="not($creatorText = .)"> </xsl:if>
             <dc11:creator>
                 <xsl:value-of
-                    select="normalize-space(replace(replace(substring-before(concat($creatorText, '|'), '|'), '(\w)$', '$1.'), '\.+$', '.'))"
+                    select="normalize-space(substring-before(concat($creatorText, '|'), '|'))"
                 />
             </dc11:creator>
             <xsl:call-template name="CreatorSplit">
                 <xsl:with-param name="creatorText"
-                    select="replace(substring-after($creatorText, '|'), '([\..]$)', '')"/>
+                    select="substring-after($creatorText, '|')"/>
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
