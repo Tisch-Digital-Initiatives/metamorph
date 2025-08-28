@@ -216,6 +216,7 @@ class Batch:
         output += fields["subjects"]
         output += "\n\n            Genre Terms\n"
         output += fields["genres"]
+        output = output.encode(encoding='utf-8')
         self.outarchive.write_member(r"subjects.txt", output)
     
     def batchit(self):
