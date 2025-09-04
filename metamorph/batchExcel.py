@@ -1,5 +1,5 @@
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 import io
 import re
 import pandas
@@ -68,7 +68,11 @@ class BatchExcel(Batch):
         xdoc = Xmldoc(xml)
         xslt = os.path.join(config.xsltdir, 'excel_to_dc.xslt')
         output = xdoc.apply_xslt(xslt)
-        output = output
+        name = self.username
+        dt = datetime.now(timezone.utc).astimezone().isoformat()
+        qr_note = "<tufts:qr_note>Metadata reviewed by: " + name + " on " + dt + "</tufts:qr_note>"
+        xdoc2 = Xmldoc(output)
+        output = xdoc2.replace_element('tufts:qr_note', qr_note)
         now = datetime.now()
         outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_Excel_Ingest.xml'
         self.outarchive.write_member(outfile, output.encode(encoding='utf-8'))
