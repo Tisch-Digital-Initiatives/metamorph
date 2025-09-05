@@ -50,7 +50,7 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
                                 <xsl:call-template name="source_bibliographicCitation"/>
                                 <xsl:call-template name="bibliographicCitation"/>
                                 <xsl:call-template name="is_part_of"/>
-                                <dc11:publisher>Tufts University. Tisch Library.</dc11:publisher>
+                                <dc11:publisher>Tufts University Tisch Library</dc11:publisher>
                                 <xsl:call-template name="date"/>
                                 <dc:created>
                                     <xsl:value-of select="current-dateTime()"/>
@@ -180,7 +180,7 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
     <xsl:template match="Title" name="title">
         <dc:title>
             <xsl:value-of select="normalize-space(replace(replace(Title, '\.$', ''), '; ', ';'))"
-            />.</dc:title>
+            /></dc:title>
     </xsl:template>
     <xsl:template match="Alternative_Title" name="alternative">
         <xsl:call-template name="altTitleSplit">
@@ -663,3 +663,4 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
         </xsl:call-template>
     </xsl:template>
 </xsl:stylesheet>
+
