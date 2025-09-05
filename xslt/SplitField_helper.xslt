@@ -19,6 +19,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
     xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#"
     xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <xsl:import href="Filename_helper.xslt"/>
     
     <!-- this portion of the XSLT creates a named template for Filename (or Accession), identifies delimiters from the input file and splits them into seperate dcterms:alternative elements, 
        it also strips out any full stops-->
