@@ -19,6 +19,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
     xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#"
     xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <xsl:import href="Filename_helper.xslt"/>
     
     <!-- this portion of the XSLT creates a named template for Filename (or Accession), identifies delimiters from the input file and splits them into seperate dcterms:alternative elements, 
        it also strips out any full stops-->
@@ -54,7 +55,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <xsl:if test="not($altTitleText = .)"> </xsl:if>
             <dc:alternative>
                 <xsl:value-of
-                    select="normalize-space(replace(substring-before(concat($altTitleText, '|'), '|'), '\..$', ''))"
+                    select="normalize-space(substring-before(concat($altTitleText, '|'), '|'))"
                 />
             </dc:alternative>
             <xsl:call-template name="altTitleSplit">
@@ -88,12 +89,12 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <xsl:if test="not($contributorText = .)"> </xsl:if>
             <dc11:contributor>
                 <xsl:value-of
-                    select="normalize-space(replace(substring-before(concat($contributorText, '|'), '|'), '(\w)$', '$1.'))"
+                    select="normalize-space(substring-before(concat($contributorText, '|'), '|'))"
                 />
             </dc11:contributor>
             <xsl:call-template name="ContributorSplit">
                 <xsl:with-param name="contributorText"
-                    select="replace(substring-after($contributorText, '|'), '([\..]$)', '')"/>
+                    select="substring-after($contributorText, '|')"/>
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
@@ -139,7 +140,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <xsl:if test="not($subjectText = .)"> </xsl:if>
             <dc11:subject>
                 <xsl:value-of
-                    select="replace(replace(replace(normalize-space(replace(substring-before(concat($subjectText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([\w]$)', '$1.'), '\)\.', ')'), '\.+$', '.')"
+                    select="replace(replace(replace(normalize-space(replace(substring-before(concat($subjectText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([\w]$)', '$1'), '\)\.', ')'), '\.+$', '.')"
                 />
             </dc11:subject>
             <xsl:call-template name="SubjectSplit">
@@ -155,7 +156,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <xsl:if test="not($persText = .)"> </xsl:if>
             <mads:PersonalName>
                 <xsl:value-of
-                    select="replace(normalize-space(replace(substring-before(concat($persText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '(\w)$', '$1.')"
+                    select="replace(normalize-space(replace(substring-before(concat($persText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '(\w)$', '$1')"
                 />
             </mads:PersonalName>
             <xsl:call-template name="persNames">
@@ -170,7 +171,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <xsl:if test="not($corpText = .)"> </xsl:if>
             <mads:CorporateName>
                 <xsl:value-of
-                    select="replace(replace(normalize-space(replace(substring-before(concat($corpText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([a-z]$)', '$1.'), '\)\.', ')')"
+                    select="replace(replace(normalize-space(replace(substring-before(concat($corpText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([a-z]$)', '$1'), '\)\.', ')')"
                 />
             </mads:CorporateName>
             <xsl:call-template name="corpNames">
@@ -185,7 +186,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <xsl:if test="not($geogText = .)"> </xsl:if>
             <dc:spatial>
                 <xsl:value-of
-                    select="replace(replace(normalize-space(replace(substring-before(concat($geogText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([a-z]$)', '$1.'), '\)\.', ')')"
+                    select="replace(replace(normalize-space(replace(substring-before(concat($geogText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([a-z]$)', '$1'), '\)\.', ')')"
                 />
             </dc:spatial>
             <xsl:call-template name="geogNames">
@@ -200,7 +201,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <xsl:if test="not($genreText = .)"> </xsl:if>
             <mads:GenreForm>
                 <xsl:value-of
-                    select="replace(replace(normalize-space(replace(substring-before(concat($genreText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([a-z]$)', '$1.'), '\)\.', ')')"
+                    select="replace(replace(normalize-space(replace(substring-before(concat($genreText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([a-z]$)', '$1'), '\)\.', ')')"
                 />
             </mads:GenreForm>
             <xsl:call-template name="GenreSplit">
@@ -216,7 +217,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <dc:temporal>
                 <xsl:value-of
                     select="normalize-space(replace(substring-before(concat($temporalText, '|'), '|'), '\..$', ''))"
-                />.</dc:temporal>
+                /></dc:temporal>
             <xsl:call-template name="TemporalSplit">
                 <xsl:with-param name="temporalText"
                     select="replace(substring-after($temporalText, '|'), '([\..]$)', '')"/>
@@ -230,7 +231,7 @@ This stylesheet creates a group of templates for normalizing data entry errors, 
             <xsl:if test="not($SpatialSplitText = .)"> </xsl:if>
             <dc:spatial>
                 <xsl:value-of
-                    select="replace(normalize-space(replace(substring-before(concat($SpatialSplitText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([\w]$)', '$1.')"
+                    select="replace(normalize-space(replace(substring-before(concat($SpatialSplitText, '|'), '|'), '(\s\-\-\s)|(\s\-\s)|(\s\-\-)|(\-\-\s)', '--')), '([\w]$)', '$1')"
                 />
             </dc:spatial>
             <xsl:call-template name="SpatialSplit">
