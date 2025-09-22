@@ -99,7 +99,7 @@
         <xsl:for-each
             select="marc:datafield[@tag = '246'][1]/marc:subfield[@code = 'a'] | marc:datafield[@tag = '240'][1]">
             <dc:alternative>
-                <xsl:value-of select="normalize-space(.)"/>.
+                <xsl:value-of select="normalize-space(.)"/>
             </dc:alternative>
         </xsl:for-each>
     </xsl:template>
