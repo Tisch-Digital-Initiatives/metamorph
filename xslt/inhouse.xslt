@@ -53,7 +53,7 @@
                                 <xsl:call-template name="oclc_number"/>
                                 <xsl:call-template name="language"/>
                                 <xsl:call-template name="internet_archive"/>
-                                <dc11:publisher>Tufts University. Tisch Library.</dc11:publisher>
+                                <dc11:publisher>Tufts University Tisch Library</dc11:publisher>
                                 <xsl:call-template name="phys_source"/>
                                 <dc:isPartOf>Digitized books &amp; manuscripts.</dc:isPartOf>
                                 <xsl:call-template name="date"/>
@@ -97,7 +97,7 @@
         <xsl:for-each
             select="marc:datafield[@tag = '246'][1]/marc:subfield[@code = 'a'] | marc:datafield[@tag = '240'][1]">
             <dc:alternative>
-                <xsl:value-of select="normalize-space(.)"/>.
+                <xsl:value-of select="normalize-space(.)"/>
             </dc:alternative>
         </xsl:for-each>
     </xsl:template>
