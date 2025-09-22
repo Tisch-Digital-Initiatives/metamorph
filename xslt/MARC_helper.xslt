@@ -28,7 +28,7 @@ This stylesheet creates a template which is called in another stylsheet, and par
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
-        <xsl:value-of select="substring($str,1,string-length($str)-string-length($delimiter))"/>
+        <xsl:value-of select="replace(substring($str,1,string-length($str)-string-length($delimiter)), '\.$', '')"/>
     </xsl:template>
     <!-- this portion of the XSLT creates a named template for personal names which identifies delimiters from the MARC, drops the relator delimiter from output and normalizes terminal punctuation-->
     <xsl:template name="nameSelect">
@@ -44,7 +44,7 @@ This stylesheet creates a template which is called in another stylsheet, and par
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
-        <xsl:value-of select="replace(substring($str,1,string-length($str)-string-length($delimiter)),'(\w$)','$1.')"/>
+        <xsl:value-of select="replace(substring($str,1,string-length($str)-string-length($delimiter)),'\.$','')"/>
     </xsl:template>
     
 </xsl:stylesheet>
