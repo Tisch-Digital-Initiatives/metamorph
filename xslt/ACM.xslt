@@ -86,12 +86,12 @@ This stylesheet converts ACM metadata to qualified Dublin Core based on the mapp
     </xsl:template>
     <xsl:template name="title">
         <xsl:choose>
-            <xsl:when test="//book-part//title">
+            <xsl:when test="//book-part/book-part-meta//title">
                 <dc:title>
-                    <xsl:value-of select="//book-part//title"/>
-                    <xsl:if test="not(ends-with(//book-part//title, '.'))">
-                        <xsl:if test="not(ends-with(//book-part//title, '?'))">
-                            <xsl:if test="not(ends-with(//book-part//title, '!'))">
+                    <xsl:value-of select="//book-part/book-part-meta//title"/>
+                    <xsl:if test="not(ends-with(//book-part/book-part-meta//title, '.'))">
+                        <xsl:if test="not(ends-with(//book-part/book-part-meta//title, '?'))">
+                            <xsl:if test="not(ends-with(//book-part/book-part-meta//title, '!'))">
                                 <xsl:text>.</xsl:text>
                             </xsl:if>
                         </xsl:if>
@@ -209,11 +209,11 @@ This stylesheet converts ACM metadata to qualified Dublin Core based on the mapp
             </xsl:choose>
             <xsl:text> "</xsl:text>
             <xsl:choose>
-                <xsl:when test="//book-part//title">
-                    <xsl:value-of select="//book-part//title"/>
-                    <xsl:if test="not(ends-with(//book-part//title, '.'))">
-                        <xsl:if test="not(ends-with(//book-part//title, '?'))">
-                            <xsl:if test="not(ends-with(//book-part//title, '!'))">
+                <xsl:when test="//book-part/book-part-meta//title">
+                    <xsl:value-of select="//book-part/book-part-meta//title"/>
+                    <xsl:if test="not(ends-with(//book-part/book-part-meta//title, '.'))">
+                        <xsl:if test="not(ends-with(//book-part/book-part-meta//title, '?'))">
+                            <xsl:if test="not(ends-with(//book-part/book-part-meta//title, '!'))">
                                 <xsl:text>.</xsl:text>
                             </xsl:if>
                         </xsl:if>

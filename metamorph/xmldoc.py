@@ -23,7 +23,10 @@ class Xmldoc():
     
     def __init__(self, file_or_buffer):
         with PySaxonProcessor(license=False) as proc:
-            self._root = proc.parse_xml(xml_text=file_or_buffer)
+            if file_or_buffer.startswith('<?xml'):
+                self._root = proc.parse_xml(xml_text=file_or_buffer)
+            else:
+                self._root = proc.parse_xml(xml_file_name=file_or_buffer)
             self._xpathproc = proc.new_xpath_processor()
             self._xsltproc = proc.new_xslt30_processor()
     
@@ -61,7 +64,7 @@ class Xmldoc():
         return self.apply_xslt(xslt_string)
     
     def apply_xslt(self, xslt):
-        if xslt.startswith('<'):
+        if xslt.startswith('<?xml'):
             xexec = self._xsltproc.compile_stylesheet(stylesheet_text=xslt)
         else:
             xexec = self._xsltproc.compile_stylesheet(stylesheet_file=xslt)
