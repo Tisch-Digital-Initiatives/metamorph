@@ -89,7 +89,7 @@
     <xsl:template match="@tag" name="title">
         <dc:title>
             <xsl:value-of
-                select="normalize-space(replace(string-join(marc:datafield[@tag = '245']/marc:subfield[matches(@code, '[abfgknps]')], ' '), '(/|:|;|,)$', ''))"
+                select="normalize-space(replace(string-join(marc:datafield[@tag = '245']/marc:subfield[matches(@code, '[abfgknps]')], ' '), '(/|:|;|,|.)$', ''))"
             />
         </dc:title>
     </xsl:template>
