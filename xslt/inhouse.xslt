@@ -53,7 +53,7 @@
                                 <xsl:call-template name="oclc_number"/>
                                 <xsl:call-template name="language"/>
                                 <xsl:call-template name="internet_archive"/>
-                                <dc11:publisher>Tufts University. Tisch Library.</dc11:publisher>
+                                <dc11:publisher>Tufts University Tisch Library</dc11:publisher>
                                 <xsl:call-template name="phys_source"/>
                                 <dc:isPartOf>Digitized books &amp; manuscripts.</dc:isPartOf>
                                 <xsl:call-template name="date"/>
@@ -89,7 +89,7 @@
     <xsl:template match="@tag" name="title">
         <dc:title>
             <xsl:value-of
-                select="normalize-space(replace(string-join(marc:datafield[@tag = '245']/marc:subfield[matches(@code, '[abfgknps]')], ' '), '(/|:|;|,)$', ''))"
+                select="normalize-space(replace(string-join(marc:datafield[@tag = '245']/marc:subfield[matches(@code, '[abfgknps]')], ' '), '(/|:|;|,|.)$', ''))"
             />
         </dc:title>
     </xsl:template>
@@ -97,7 +97,7 @@
         <xsl:for-each
             select="marc:datafield[@tag = '246'][1]/marc:subfield[@code = 'a'] | marc:datafield[@tag = '240'][1]">
             <dc:alternative>
-                <xsl:value-of select="normalize-space(.)"/>.
+                <xsl:value-of select="normalize-space(.)"/>
             </dc:alternative>
         </xsl:for-each>
     </xsl:template>

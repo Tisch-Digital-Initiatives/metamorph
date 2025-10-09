@@ -43,8 +43,8 @@ This stylesheet converts Springer metadata to qualified Dublin Core based on the
                                 <xsl:call-template name="abstract"/>
                                 <xsl:call-template name="keywords"/>
                                 <dc11:description>Springer Open.</dc11:description>
-                                <dc:isPartOf>Tufts University faculty scholarship.</dc:isPartOf>
-                                <dc11:publisher>Tufts University. Tisch Library.</dc11:publisher>
+                                <dc:isPartOf>Tufts University faculty scholarship</dc:isPartOf>
+                                <dc11:publisher>Tufts University Tisch Library</dc11:publisher>
                                 <xsl:call-template name="doi"/>
                                 <xsl:call-template name="citation"/>
 					    		<xsl:call-template name="rights"/>
@@ -77,13 +77,6 @@ This stylesheet converts Springer metadata to qualified Dublin Core based on the
     <xsl:template match="//ArticleTitle" name="title">
         <dc:title>
             <xsl:value-of select="//ArticleTitle"/>
-            <xsl:if test="not(ends-with(//ArticleTitle, '.'))">
-                <xsl:if test="not(ends-with(//ArticleTitle, '?'))">
-                    <xsl:if test="not(ends-with(//ArticleTitle, '!'))">
-                        <xsl:text>.</xsl:text>
-                    </xsl:if>
-                </xsl:if>
-            </xsl:if>
         </dc:title>
     </xsl:template>
     <xsl:template match="//AuthorGroup" name="creator">
@@ -107,9 +100,6 @@ This stylesheet converts Springer metadata to qualified Dublin Core based on the
                                 <xsl:value-of select="normalize-space(.//GivenName[1])"/>
                                 <xsl:text> </xsl:text>
                                 <xsl:value-of select="normalize-space(replace(.//GivenName[2], '\.+$', ''))"/>
-                                <xsl:if test=".//GivenName[2][not(ends-with(., '.'))]">
-                                    <xsl:text>.</xsl:text>
-                                </xsl:if>
                             </dc11:creator>
                         </xsl:when>
                         <xsl:otherwise>
@@ -117,12 +107,8 @@ This stylesheet converts Springer metadata to qualified Dublin Core based on the
                                 <xsl:value-of select="normalize-space(.//FamilyName)"/>
                                 <xsl:text>, </xsl:text>
                                 <xsl:value-of select="normalize-space(.//GivenName[1])"/>
-                                <xsl:if test=".//GivenName[1][not(ends-with(., '.'))]">
-                                    <xsl:text>.</xsl:text>
-                                </xsl:if>
                             </dc11:creator>
                         </xsl:otherwise>
-
                     </xsl:choose>
                 </xsl:for-each>
             </xsl:otherwise>
