@@ -41,7 +41,7 @@ This stylesheet converts ACM metadata to qualified Dublin Core based on the mapp
                             <xsl:call-template name="keywords"/>
                             <xsl:call-template name="topic"/>
                             <dc11:description>ACM Open.</dc11:description>
-                            <dc11:publisher>Tufts University. Tisch Library.</dc11:publisher>
+                            <dc11:publisher>Tufts University Tisch Library</dc11:publisher>
                             <xsl:call-template name="doi"/>
                             <xsl:call-template name="citation"/>
                             <xsl:call-template name="rights"/>
@@ -89,25 +89,11 @@ This stylesheet converts ACM metadata to qualified Dublin Core based on the mapp
             <xsl:when test="//book-part//title">
                 <dc:title>
                     <xsl:value-of select="//book-part//title"/>
-                    <xsl:if test="not(ends-with(//book-part//title, '.'))">
-                        <xsl:if test="not(ends-with(//book-part//title, '?'))">
-                            <xsl:if test="not(ends-with(//book-part//title, '!'))">
-                                <xsl:text>.</xsl:text>
-                            </xsl:if>
-                        </xsl:if>
-                    </xsl:if>
                 </dc:title>
             </xsl:when>
             <xsl:when test="//article-meta//article-title">
                 <dc:title>
                     <xsl:value-of select="//article-meta//article-title"/>
-                    <xsl:if test="not(ends-with(//article-meta//article-title, '.'))">
-                        <xsl:if test="not(ends-with(//article-meta//article-title, '?'))">
-                            <xsl:if test="not(ends-with(//article-meta//article-title, '!'))">
-                                <xsl:text>.</xsl:text>
-                            </xsl:if>
-                        </xsl:if>
-                    </xsl:if>
                 </dc:title>
             </xsl:when>
         </xsl:choose>
@@ -123,9 +109,6 @@ This stylesheet converts ACM metadata to qualified Dublin Core based on the mapp
                         <xsl:value-of select="normalize-space(.//name/surname)"/>
                         <xsl:text>, </xsl:text>
                         <xsl:value-of select="normalize-space(.//name/given-names)"/>
-                        <xsl:if test="not(ends-with(.//name/given-names, '.'))">
-                            <xsl:text>.</xsl:text>
-                        </xsl:if>
                     </dc11:creator>
                 </xsl:for-each>
             </xsl:otherwise>
