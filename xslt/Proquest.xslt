@@ -368,7 +368,7 @@
                 <tufts:creator_department>Tufts University Department of Classical Studies</tufts:creator_department>
             </xsl:when>
             <xsl:when test="//DISS_inst_contact[1][contains(text(), 'Computer')]">
-                <tufts:creator_department>Tufts University. Department of Computer Science</tufts:creator_department>
+                <tufts:creator_department>Tufts University Department of Computer Science</tufts:creator_department>
             </xsl:when>
             <xsl:when test="//DISS_inst_contact[1][contains(text(), 'Dance')]">
                 <tufts:creator_department>Tufts University Department of Theatre, Dance and Performance Studies</tufts:creator_department>
@@ -390,6 +390,9 @@
             </xsl:when>
             <xsl:when test="//DISS_inst_contact[1][matches(text(), 'History')]">
                 <tufts:creator_department>Tufts University Department of History</tufts:creator_department>
+            </xsl:when>
+			<xsl:when test="//DISS_inst_contact[1][matches(text(), 'Leadership')]">
+                <tufts:creator_department>Tufts University Department of Leadership</tufts:creator_department>
             </xsl:when>
             <xsl:when test="//DISS_inst_contact[1][contains(text(), 'Mathematics')]">
                 <tufts:creator_department>Tufts University Department of Mathematics</tufts:creator_department>
