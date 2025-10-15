@@ -138,8 +138,7 @@ This stylesheet converts Springer metadata to qualified Dublin Core based on the
                         select=".//Keyword[not(position() = last())]"><xsl:value-of
                             select="normalize-space(.)"/><xsl:text>, </xsl:text></xsl:for-each>
                     <xsl:if test=".//Keyword[last()]">
-                        <xsl:value-of select="normalize-space(.//Keyword[last()])"
-                        /><xsl:text>.</xsl:text>
+                        <xsl:value-of select="normalize-space(.//Keyword[last()])"/>
                     </xsl:if>
                 </dc11:description>
             </xsl:when>
@@ -152,7 +151,6 @@ This stylesheet converts Springer metadata to qualified Dublin Core based on the
                     </xsl:for-each>
                     <xsl:if test=".//Keyword[last()]">
                         <xsl:value-of select="normalize-space(.//Keyword[last()])"/>
-                        <xsl:text>.</xsl:text>
                     </xsl:if>
                 </dc11:description>
             </xsl:when>
@@ -168,7 +166,6 @@ This stylesheet converts Springer metadata to qualified Dublin Core based on the
                         test=".//AbbreviationGroup/DefinitionList/DefinitionListEntry[position() = last()]">
                         <xsl:value-of
                             select="normalize-space(replace(.//AbbreviationGroup/DefinitionList/DefinitionListEntry[last()]/Description/Para, '\.+$', ''))"/>
-                        <xsl:text>.</xsl:text>
                     </xsl:if>
                 </dc11:description>
             </xsl:when>

@@ -11,12 +11,20 @@ class BatchProQuest(Batch):
     def batchit(self):
         self.package()
         coll = self.outarchive.glob('**/*.xml')
+        paths = []
+        for f in coll:
+            path = os.path.join(self.outarchive.getroot(), f)
+            path = path.replace('\\', '/')
+            paths.append(path)
+        content = self.collection(paths)
         xslt = os.path.join(config.xsltdir, 'Proquest.xslt')
+        output = self.xsl_transform(content, xslt)
+        
         now = datetime.now()
         outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_ProQuest_Ingest.xml'
-        self.xsl_transform(coll, outfile, xslt)
-        ingest = self.outarchive.read_member(outfile)
-        subjects = self.extract_subjects(ingest)
+        self.outarchive.write_member(outfile, output)
+        content = self.outarchive.read_member(outfile, encoding='utf-8')
+        self.extract_subjects(content)
         self.qa_it(outfile)
 
 

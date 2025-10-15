@@ -55,7 +55,7 @@
                                 <xsl:call-template name="internet_archive"/>
                                 <dc11:publisher>Tufts University Tisch Library</dc11:publisher>
                                 <xsl:call-template name="phys_source"/>
-                                <dc:isPartOf>Digitized books &amp; manuscripts.</dc:isPartOf>
+                                <dc:isPartOf>Digitized books &amp; manuscripts</dc:isPartOf>
                                 <xsl:call-template name="date"/>
                                 <dc:created>
                                     <xsl:value-of select="current-dateTime()"/>

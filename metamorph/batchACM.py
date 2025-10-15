@@ -9,12 +9,21 @@ from . import config
 class BatchACM(Batch):
     def batchit(self):
         self.package()
+        content = self.outarchive.read_member(r"xml\mets.xml")
+        content = content.replace(
+            '"BITS-book-oasis2.dtd"',
+            r'"https://jats.nlm.nih.gov/extensions/bits/2.0/BITS-book-oasis2.dtd"')
+        content = content.replace(
+            '"JATS-archive-oasis-article1-mathml3.dtd"',
+            r'"https://jats.nlm.nih.gov/archiving/1.2d1/JATS-archive-oasis-article1-mathml3.dtd"')
         xslt = os.path.join(config.xsltdir, 'ACM.xslt')
+        output = self.xsl_transform(content, xslt)
+
         now = datetime.now()
-        outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_Springer_Ingest.xml'
-        self.xsl_transform(r"xml\mets.xml", outfile, xslt)
-        ingest = self.outarchive.read_member(outfile)
-        self.extract_subjects(ingest)
+        outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_ACM_Ingest.xml'
+        self.outarchive.write_member(outfile, output)
+        content = self.outarchive.read_member(outfile, encoding='utf-8')
+        self.extract_subjects(content)
         self.qa_it(outfile)
 
 

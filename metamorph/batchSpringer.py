@@ -18,12 +18,20 @@ class BatchSpringer(Batch):
             self.inarchive.copy_member(f, self.outarchive, newname)
         
         coll = self.outarchive.glob('**/*.xml')
+        paths = []
+        for f in coll:
+            path = os.path.join(self.outarchive.getroot(), f)
+            path = path.replace('\\', '/')
+            paths.append(path)
+        content = self.collection(paths)
         xslt = os.path.join(config.xsltdir, 'Springer.xslt')
+        output = self.xsl_transform(content, xslt)
+        
         now = datetime.now()
         outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_Springer_Ingest.xml'
-        self.xsl_transform(coll, outfile, xslt)
-        ingest = self.outarchive.read_member(outfile)
-        self.extract_subjects(ingest)
+        self.outarchive.write_member(outfile, output)
+        content = self.outarchive.read_member(outfile, encoding='utf-8')
+        self.extract_subjects(content)
         self.qa_it(outfile)
 
 

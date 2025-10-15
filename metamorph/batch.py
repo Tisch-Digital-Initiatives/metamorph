@@ -119,13 +119,13 @@ class Batch:
             out = os.path.join('zip', os.path.basename(f))
             self.inarchive.copy_member(f, self.outarchive, out)
     
-    def __collection(self, xmlfiles):
-        collection = '<?xml version=\'1.0\' encoding = \'UTF-8\'?>\n'
-        collection += '<collection>\n'
+    def collection(self, xmlfiles):
+        coll = '<?xml version=\'1.0\' encoding = \'UTF-8\'?>\n'
+        coll += '<collection>\n'
         for f in xmlfiles:
-            collection += '    <doc href=\'' + f + '\'/>\n'
-        collection += '</collection>\n'
-        return collection
+            coll += '    <doc href=\'' + f + '\'/>\n'
+        coll += '</collection>\n'
+        return coll
     
     def qa_it(self, xml_file):
         answer = ui.yesno(
@@ -134,17 +134,13 @@ class Batch:
             self.outarchive.launch('subjects.txt')
             self.outarchive.launch(xml_file)
             
-    def xsl_transform(self, inpath, outpath, xslt):
+    def xsl_transform(self, inpath, xslt):
         ui.log("doing transform")
-        if isinstance(inpath, str):
-            content = self.outarchive.read_member(inpath)
+        if inpath.startswith('<?xml'):
+            content = inpath
         else:
-            paths = []
-            for f in inpath:
-                path = os.path.join(self.outarchive.getroot(), f)
-                path = path.replace('\\', '/')
-                paths.append(path)
-            content = self.__collection(paths)
+            content = self.outarchive.read_member(inpath)
+
         xdoc = Xmldoc(content)
         output = xdoc.apply_xslt(xslt)
         name = self.username
@@ -153,7 +149,7 @@ class Batch:
         xdoc2 = Xmldoc(output)
         output = xdoc2.replace_element('tufts:qr_note', qr_note)
         output = output.encode(encoding='utf-8')
-        self.outarchive.write_member(outpath, output)
+        return output
     
     def extract_subjects(self, file):
         xdoc = Xmldoc(file)

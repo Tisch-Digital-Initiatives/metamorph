@@ -47,8 +47,7 @@
                                 <xsl:call-template name="committee"/>
                                 <xsl:call-template name="keywords"/>
                                 <xsl:call-template name="institution"/>
-                                <dc:isPartOf>Tufts University electronic theses and dissertations
-								</dc:isPartOf>
+                                <dc:isPartOf>Tufts University electronic theses and dissertations</dc:isPartOf>
                                 <dc11:publisher>Tufts University Tisch Library</dc11:publisher>
                                 <xsl:call-template name="date"/>
                                 <dc:created>
@@ -262,7 +261,6 @@
                         <xsl:text>and </xsl:text>
                         <xsl:value-of
                             select="/DISS_submission/DISS_description/DISS_categorization/DISS_category[position() > 1][last()]/DISS_cat_desc"/>
-                        <xsl:text>.</xsl:text>
                     </xsl:if>
                 </dc11:description>
             </xsl:when>
@@ -271,7 +269,6 @@
                     <xsl:text>Keyword: </xsl:text>
                     <xsl:value-of
                         select="normalize-space(/DISS_submission/DISS_description[1]/DISS_categorization[1]/DISS_category[1]/DISS_cat_desc[1])"/>
-                    <xsl:text>.</xsl:text>
                 </dc11:description>
             </xsl:otherwise>
         </xsl:choose>
@@ -350,7 +347,7 @@
                 <tufts:creator_department>Gerald J. &amp; Dorothy R. Friedman School of Nutrition Science and Policy</tufts:creator_department>
             </xsl:when>
             <xsl:when test="//DISS_inst_contact[1][contains(text(), 'Art')]">
-                <tufts:creator_department>Tufts University. Department of the History of Art and Architecture</tufts:creator_department>
+                <tufts:creator_department>Tufts University Department of the History of Art and Architecture</tufts:creator_department>
             </xsl:when>
             <xsl:when test="//DISS_inst_contact[1][contains(text(), 'Biology')]">
                 <tufts:creator_department>Tufts University Department of Biology</tufts:creator_department>
@@ -371,7 +368,7 @@
                 <tufts:creator_department>Tufts University Department of Classical Studies</tufts:creator_department>
             </xsl:when>
             <xsl:when test="//DISS_inst_contact[1][contains(text(), 'Computer')]">
-                <tufts:creator_department>Tufts University Department of Computer Science</tufts:creator_department>
+                <tufts:creator_department>Tufts University. Department of Computer Science</tufts:creator_department>
             </xsl:when>
             <xsl:when test="//DISS_inst_contact[1][contains(text(), 'Dance')]">
                 <tufts:creator_department>Tufts University Department of Theatre, Dance and Performance Studies</tufts:creator_department>
@@ -486,7 +483,7 @@
             </xsl:when>
             <xsl:when
                 test="//DISS_inst_name[1][contains(text(), 'Graduate School of Biomedical Sciences')] and //DISS_inst_contact[1][contains(text(), 'Microbiology')]">
-                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences. Department of Molecular Microbiology.</tufts:creator_department>
+                <tufts:creator_department>Tufts Graduate School of Biomedical Sciences Department of Molecular Microbiology</tufts:creator_department>
             </xsl:when>
             <xsl:when
                 test="//DISS_inst_name[1][contains(text(), 'Graduate School of Biomedical Sciences')] and //DISS_inst_contact[1][contains(text(), 'Neuroscience')]">
