@@ -30,7 +30,7 @@ class BatchSpringer(Batch):
         now = datetime.now()
         outfile = now.strftime('%Y-%m-%d-%H%M%S') + '_Springer_Ingest.xml'
         self.outarchive.write_member(outfile, output)
-        content = self.outarchive.read_member(outfile)
+        content = self.outarchive.read_member(outfile, encoding='utf-8')
         self.extract_subjects(content)
         self.qa_it(outfile)
 
