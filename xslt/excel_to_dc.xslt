@@ -517,6 +517,9 @@ This stylesheet converts Excel metadata to qualified Dublin Core based on the ma
             <xsl:when test="Format = 'video/quicktime'">
                 <dc:type>http://purl.org/dc/dcmitype/MovingImage</dc:type>
             </xsl:when>
+            <xsl:when test="Format = 'application/mp3'">
+                <dc:type>http://purl.org/dc/dcmitype/Sound</dc:type>
+            </xsl:when>
             <xsl:when test="Format = 'audio/wav'">
                 <dc:type>http://purl.org/dc/dcmitype/Sound</dc:type>
             </xsl:when>
